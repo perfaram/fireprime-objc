@@ -16,4 +16,7 @@ FOUNDATION_EXPORT const unsigned char FirePrimeVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <FirePrime/PublicHeader.h>
 
-
+#import <FirePrime/FPLicenseState.h>
+#import <FirePrime/FPKey.h>
+#import <FirePrime/FPLicenseInformations.h>
+#import <FirePrime/FPLicenseChecker.h>
