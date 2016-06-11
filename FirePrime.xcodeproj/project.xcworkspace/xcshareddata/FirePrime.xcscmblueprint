@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "6C990DB70B1A24027F27FA2BB514067B32B0AD7A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0188F2A2CDE1E23FB54BA7DEC720DB0076A94A2D" : 0,
+    "6C990DB70B1A24027F27FA2BB514067B32B0AD7A" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "34B2098A-47AE-4330-B2BA-BE02EB39887B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0188F2A2CDE1E23FB54BA7DEC720DB0076A94A2D" : "fireprime\/protobuf-objc\/",
+    "6C990DB70B1A24027F27FA2BB514067B32B0AD7A" : "fireprime\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "FirePrime",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "FirePrime.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/perfaram\/protobuf-objc.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0188F2A2CDE1E23FB54BA7DEC720DB0076A94A2D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:perfaram\/fireprime.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6C990DB70B1A24027F27FA2BB514067B32B0AD7A"
+    }
+  ]
+}
