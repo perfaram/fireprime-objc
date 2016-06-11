@@ -62,7 +62,6 @@
 		0B2FD0991CFAE20A00086BCD /* utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B2FD0631CFAE20A00086BCD /* utils.h */; };
 		0B2FD09A1CFAE20A00086BCD /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B2FD0641CFAE20A00086BCD /* version.h */; };
 		0B2FD09B1CFAE20A00086BCD /* sodium.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B2FD0651CFAE20A00086BCD /* sodium.h */; };
-		0B6998611D09F85000C8A364 /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B69985F1D09F83300C8A364 /* ProtocolBuffers.framework */; };
 		0B7C13C41D07214C00712C2E /* FPLicenseInformations.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B7C13C21D07214C00712C2E /* FPLicenseInformations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B7C13C51D07214C00712C2E /* FPLicenseInformations.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C13C31D07214C00712C2E /* FPLicenseInformations.m */; };
 		0B7C13C81D07221700712C2E /* FPLicenseState.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B7C13C71D07221700712C2E /* FPLicenseState.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -76,31 +75,39 @@
 		0B8F926C1D0560B900240DDE /* FPLicenseGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8F92621D0560B900240DDE /* FPLicenseGenerator.m */; };
 		0B8F926D1D0560B900240DDE /* License.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B8F92631D0560B900240DDE /* License.pb.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B8F926E1D0560B900240DDE /* License.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8F92641D0560B900240DDE /* License.pb.m */; };
+		0BCE0D811D0CB71F008C37BB /* ProtocolBuffers-OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BCE0D7A1D0CB67C008C37BB /* ProtocolBuffers-OSX.framework */; };
 		0BED2F971D073BE300C1A4E0 /* FirePrimeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BED2F961D073BE300C1A4E0 /* FirePrimeTests.m */; };
 		0BED2F991D073BE300C1A4E0 /* FirePrime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B2FCFE01CFAC83A00086BCD /* FirePrime.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0B69985A1D09F83300C8A364 /* PBXContainerItemProxy */ = {
+		0BCE0D731D0CB67C008C37BB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0B6998541D09F83300C8A364 /* ProtocolBuffers.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D2AAC07E0554694100DB518D;
 			remoteInfo = ProtocolBuffers;
 		};
-		0B69985C1D09F83300C8A364 /* PBXContainerItemProxy */ = {
+		0BCE0D751D0CB67C008C37BB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0B6998541D09F83300C8A364 /* ProtocolBuffers.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = C5B03F76125179F30087887C;
 			remoteInfo = UnitTests;
 		};
-		0B69985E1D09F83300C8A364 /* PBXContainerItemProxy */ = {
+		0BCE0D771D0CB67C008C37BB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0B6998541D09F83300C8A364 /* ProtocolBuffers.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 097A223F1B8B10BB00D02243;
-			remoteInfo = ProtocolBuffers.framework;
+			remoteInfo = "iOS Framework";
+		};
+		0BCE0D791D0CB67C008C37BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0B6998541D09F83300C8A364 /* ProtocolBuffers.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0BCE0D6A1D0CB2BB008C37BB;
+			remoteInfo = "OSX Framework";
 		};
 		0BED2F9A1D073BE300C1A4E0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -169,7 +176,7 @@
 		0B2FD0631CFAE20A00086BCD /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
 		0B2FD0641CFAE20A00086BCD /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		0B2FD0651CFAE20A00086BCD /* sodium.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sodium.h; sourceTree = "<group>"; };
-		0B6998541D09F83300C8A364 /* ProtocolBuffers.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ProtocolBuffers.xcodeproj; path = "../protobuf-objc/src/runtime/ProtocolBuffers.xcodeproj"; sourceTree = "<group>"; };
+		0B6998541D09F83300C8A364 /* ProtocolBuffers.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ProtocolBuffers.xcodeproj; path = "protobuf-objc/src/runtime/ProtocolBuffers.xcodeproj"; sourceTree = "<group>"; };
 		0B7C13C21D07214C00712C2E /* FPLicenseInformations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPLicenseInformations.h; path = FirePrime/FPLicenseInformations.h; sourceTree = "<group>"; };
 		0B7C13C31D07214C00712C2E /* FPLicenseInformations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPLicenseInformations.m; path = FirePrime/FPLicenseInformations.m; sourceTree = "<group>"; };
 		0B7C13C71D07221700712C2E /* FPLicenseState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPLicenseState.h; path = FirePrime/FPLicenseState.h; sourceTree = "<group>"; };
@@ -194,7 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B2FD02D1CFAE1FD00086BCD /* libsodium.a in Frameworks */,
-				0B6998611D09F85000C8A364 /* ProtocolBuffers.framework in Frameworks */,
+				0BCE0D811D0CB71F008C37BB /* ProtocolBuffers-OSX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,16 +318,6 @@
 			path = sodium;
 			sourceTree = "<group>";
 		};
-		0B6998551D09F83300C8A364 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0B69985B1D09F83300C8A364 /* libProtocolBuffers.a */,
-				0B69985D1D09F83300C8A364 /* UnitTests.xctest */,
-				0B69985F1D09F83300C8A364 /* ProtocolBuffers.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		0B7C13C61D0721E100712C2E /* Protobufs */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,6 +351,17 @@
 				0B7C13C61D0721E100712C2E /* Protobufs */,
 			);
 			name = FirePrime;
+			sourceTree = "<group>";
+		};
+		0BCE0D6D1D0CB67C008C37BB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0BCE0D741D0CB67C008C37BB /* libProtocolBuffers.a */,
+				0BCE0D761D0CB67C008C37BB /* UnitTests.xctest */,
+				0BCE0D781D0CB67C008C37BB /* ProtocolBuffers-iOS.framework */,
+				0BCE0D7A1D0CB67C008C37BB /* ProtocolBuffers-OSX.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		0BED2F951D073BE300C1A4E0 /* FirePrimeTests */ = {
@@ -505,7 +513,7 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 0B6998551D09F83300C8A364 /* Products */;
+					ProductGroup = 0BCE0D6D1D0CB67C008C37BB /* Products */;
 					ProjectRef = 0B6998541D09F83300C8A364 /* ProtocolBuffers.xcodeproj */;
 				},
 			);
@@ -518,25 +526,32 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		0B69985B1D09F83300C8A364 /* libProtocolBuffers.a */ = {
+		0BCE0D741D0CB67C008C37BB /* libProtocolBuffers.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libProtocolBuffers.a;
-			remoteRef = 0B69985A1D09F83300C8A364 /* PBXContainerItemProxy */;
+			remoteRef = 0BCE0D731D0CB67C008C37BB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0B69985D1D09F83300C8A364 /* UnitTests.xctest */ = {
+		0BCE0D761D0CB67C008C37BB /* UnitTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = UnitTests.xctest;
-			remoteRef = 0B69985C1D09F83300C8A364 /* PBXContainerItemProxy */;
+			remoteRef = 0BCE0D751D0CB67C008C37BB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0B69985F1D09F83300C8A364 /* ProtocolBuffers.framework */ = {
+		0BCE0D781D0CB67C008C37BB /* ProtocolBuffers-iOS.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = ProtocolBuffers.framework;
-			remoteRef = 0B69985E1D09F83300C8A364 /* PBXContainerItemProxy */;
+			path = "ProtocolBuffers-iOS.framework";
+			remoteRef = 0BCE0D771D0CB67C008C37BB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0BCE0D7A1D0CB67C008C37BB /* ProtocolBuffers-OSX.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = "ProtocolBuffers-OSX.framework";
+			remoteRef = 0BCE0D791D0CB67C008C37BB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

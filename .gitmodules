@@ -1,0 +1,3 @@
+[submodule "protobuf-objc"]
+	path = protobuf-objc
+	url = https://github.com/perfaram/protobuf-objc.git
