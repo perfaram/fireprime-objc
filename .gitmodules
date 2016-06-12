@@ -1,3 +1,6 @@
 [submodule "protobuf-objc"]
 	path = protobuf-objc
 	url = https://github.com/perfaram/protobuf-objc.git
+[submodule "FirePrime/fireprime-protos"]
+	path = FirePrime/fireprime-protos
+	url = https://github.com/perfaram/fireprime-protos.git
