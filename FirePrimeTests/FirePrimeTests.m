@@ -50,11 +50,13 @@
         XCTAssert([info.target isEqualToString:@"com.valyriansteel.longclaw"]);
         XCTAssert(fabs([info.created timeIntervalSinceDate:nowDate]) < 1);
         XCTAssert([info.licenseId isEqualToString:@"ASOIAF96"]);
-        
+        XCTAssert(info.state == FPLicenseStateValid);
         XCTAssertFalse(info.orderId);
         XCTAssertFalse(info.email);
         XCTAssertFalse(info.company);
         XCTAssert(info.instances == -1);
+        
+        
     }
 }
 
