@@ -20,3 +20,4 @@ FOUNDATION_EXPORT const unsigned char FirePrimeVersionString[];
 #import <FirePrime/FPKey.h>
 #import <FirePrime/FPLicenseInformations.h>
 #import <FirePrime/FPLicenseChecker.h>
+#import <FirePrime/FPSigning.h>
