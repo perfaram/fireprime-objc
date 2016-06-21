@@ -794,6 +794,7 @@
 				0B55F3CF1D193AF2002DF997 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

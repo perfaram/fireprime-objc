@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ The root class for all asymmetric crypto keys
+ */
 @interface FPKey : NSObject
 /**
  Initializes & returns a new instance of FPKey, using the given hex string. Passing a string of an odd length, or containing non-hex chars will have this function return `nil`.
@@ -28,6 +31,14 @@
  */
 -(nullable instancetype) initWithBuffer:(nonnull unsigned char *)buffer ofLength:(size_t)size copying:(BOOL)copy;
 
+/**
+ The expected length for the current type of key
+ */
++(NSUInteger) keyLength;
+
+/**
+ The actual length of the inner buffer
+ */
 -(NSUInteger) length;
 
 /**
@@ -64,9 +75,36 @@
 -(nonnull NSData*) copyData;
 @end
 
-@interface FPSignKeyPublic : FPKey
+/**
+ A abstract class for all public keys
+ */
+@interface FPKeyPublic : FPKey
 @end
 
+/**
+ An abstract class for all secret keys
+ */
+@interface FPKeySecret : FPKeyPublic
+/**
+ Computes the public key from self (a secret key)
+ */
+-(nonnull __kindof FPKeyPublic*) publicKey;
+
+/**
+ Generates a secret/public key pair
+ */
++(nullable instancetype) generateKey;
+@end
+
+/**
+ The class used to verify signed messages, of length crypto_sign_PUBLICKEYBYTES
+ */
+@interface FPSignKeyPublic : FPKeyPublic
+@end
+
+/**
+ The class used to sign messages, of length crypto_sign_SECRETKEYBYTES
+ */
 @interface FPSignKeySecret : FPSignKeyPublic
 -(nonnull FPSignKeyPublic*) publicKey;
 +(nullable instancetype) generateKey;
