@@ -17,12 +17,16 @@
 
 
 @implementation FPKeyPublic
++(NSUInteger) keyLength {
+    return crypto_sign_PUBLICKEYBYTES;
+}
+
 -(instancetype) initWithKey:(NSString *)string {
     self = [super init];
     if (self) {
         if (sodium_init() == -1)
             return nil;
-        if ((string.length != crypto_sign_PUBLICKEYBYTES*2) && (string.length != crypto_sign_SECRETKEYBYTES*2))
+        if ((string.length != [self.class keyLength]*2))
             return nil;
         NSCharacterSet *chars = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789ABCDEF"] invertedSet];
         BOOL isValid = (NSNotFound == [string rangeOfCharacterFromSet:chars].location);
@@ -80,6 +84,9 @@
 @end
 
 @implementation FPKeySecret
++(NSUInteger) keyLength {
+    return crypto_sign_SECRETKEYBYTES;
+}
 
 -(FPKeyPublic*) publicKey {
     if (publicKey)
