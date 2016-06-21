@@ -73,6 +73,11 @@
 -(void) copyToBuffer:(unsigned char *)buffer {
     memcpy(buffer, key, length);
 }
+
+-(void) dealloc {
+    sodium_memzero(key, length);
+    free(key);
+}
 @end
 
 
