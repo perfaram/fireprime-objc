@@ -74,6 +74,14 @@
     memcpy(buffer, key, length);
 }
 
+-(NSData*) data {
+    return [NSData dataWithBytesNoCopy:key length:length];
+}
+
+-(NSData*) copyData {
+    return [NSData dataWithBytes:key length:length];
+}
+
 -(void) dealloc {
     sodium_memzero(key, length);
     free(key);

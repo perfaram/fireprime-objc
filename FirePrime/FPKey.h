@@ -25,6 +25,8 @@
 -(nonnull NSString*) asString;
 -(nonnull unsigned const char*) buffer;
 -(void) copyToBuffer:(nonnull unsigned char *)buffer;
+-(NSData*) data;
+-(NSData*) copyData;
 @end
 
 @interface FPKeySecret : FPKeyPublic
