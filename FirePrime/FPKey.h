@@ -19,14 +19,14 @@
  
  @discussion If you pass YES for `copy`, you may safely free the buffer you passed (this method won't do it for you). HOWEVER, if you choose NOT to copy, it is YOUR responsibility to ensure that the `buffer` will not be freed for the newly created instance's lifetime ; and because the inner workings of FPKey make the assumption that the buffer exists, bad things will happen.
  */
--(nullable instancetype) initWithBuffer:(unsigned char *)buffer ofLength:(size_t)size copying:(BOOL)copy;
+-(nullable instancetype) initWithBuffer:(nonnull unsigned char *)buffer ofLength:(size_t)size copying:(BOOL)copy;
 
 -(NSUInteger) length;
 -(nonnull NSString*) asString;
 -(nonnull unsigned const char*) buffer;
 -(void) copyToBuffer:(nonnull unsigned char *)buffer;
--(NSData*) data;
--(NSData*) copyData;
+-(nonnull NSData*) data;
+-(nonnull NSData*) copyData;
 @end
 
 @interface FPKeySecret : FPKeyPublic
