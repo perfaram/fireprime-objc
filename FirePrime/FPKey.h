@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FPKeyPublic : NSObject
+@interface FPKey : NSObject
 /**
- Initializes & returns a new instance of FPKey, using the given hex string, whose length must be either XX or XX (denoting whether FPKey is a private or a public key). Passing a string of any other length, or containing non-hex chars will have this function return `nil`.
+ Initializes & returns a new instance of FPKey, using the given hex string. Passing a string of an odd length, or containing non-hex chars will have this function return `nil`.
  */
 -(nullable instancetype) initWithKey:(nonnull NSString*)string;
 
@@ -62,6 +62,9 @@
  @discussion Safer than -data, because contrary to it, the returned NSData may outlive this instance. They are completely independent.
  */
 -(nonnull NSData*) copyData;
+@end
+
+@interface FPKeyPublic : FPKey
 @end
 
 @interface FPKeySecret : FPKeyPublic
