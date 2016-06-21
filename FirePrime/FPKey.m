@@ -9,16 +9,22 @@
 #import "FPKey.h"
 #include "sodium.h"
 
-@interface FPSignKeyPublic () {
+@interface FPKey () {
     unsigned char* key;
     NSUInteger length;
 }
 @end
 
 
-@implementation FPSignKeyPublic
+@implementation FPKey
 +(NSUInteger) keyLength {
-    return crypto_sign_PUBLICKEYBYTES;
+    NSString *error = [NSString stringWithFormat:
+                       NSLocalizedString(@"You must override %@ in a subclass", nil),
+                       NSStringFromSelector(_cmd)];
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                   reason:error
+                                 userInfo:nil];
+    return 0;
 }
 
 -(instancetype) initWithKey:(NSString *)string {
@@ -100,6 +106,12 @@
 }
 @end
 
+
+@implementation FPSignKeyPublic
++(NSUInteger) keyLength {
+    return crypto_sign_PUBLICKEYBYTES;
+}
+@end
 
 
 @interface FPSignKeySecret() {
