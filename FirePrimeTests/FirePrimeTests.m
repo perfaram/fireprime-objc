@@ -82,7 +82,6 @@
         
         FPLicenseChecker* checker = [FPLicenseChecker.alloc initWithPublicKey:secretKey.publicKey];
         FPLicenseInformations* info = [checker validateLicenseFromData:license];
-        NSLocale* currentLoc = [NSLocale currentLocale];
         
         XCTAssert([info.name isEqualToString:@"Jon Snow"]);
         XCTAssert([info.target isEqualToString:@"com.valyriansteel.longclaw"]);
