@@ -39,6 +39,18 @@
     return self;
 }
 
+-(instancetype) initWithData:(NSData*)data {//will copy NSData
+    self = [super init];
+    if (self) {
+        if (sodium_init() == -1)
+            return nil;
+        length = data.length;
+        key = malloc(length);
+        memcpy(key, data.bytes, length);
+    }
+    return self;
+}
+
 -(instancetype) initWithBuffer:(unsigned char *)buffer ofLength:(size_t)size copying:(BOOL)copy {
     self = [super init];
     if (self) {
