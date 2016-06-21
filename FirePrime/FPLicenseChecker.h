@@ -18,7 +18,7 @@
 }
 @property NSArray<NSString*>*__nullable blacklist;
 - (nullable instancetype) initWithPublicKey:(nonnull FPSignKeyPublic*)key;
-- (FPLicenseInformations*) validateLicenseAtPath:(NSString*)path;
-- (FPLicenseInformations*) validateLicenseFromData:(NSData*)data;
+- (nonnull FPLicenseInformations*) validateLicenseAtPath:(nonnull NSString*)path;
+- (nonnull FPLicenseInformations*) validateLicenseFromData:(nonnull NSData*)data;
 
 @end

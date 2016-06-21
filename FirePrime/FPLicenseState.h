@@ -8,7 +8,7 @@
 
 #ifndef FPLicenseState_h
 #define FPLicenseState_h
-
+typedef NSError*__nullable __autoreleasing*__nullable ByRefError;
 /**
  The state of a given license. Can be Valid, Invalid, Malformed, or Blacklisted.
  
