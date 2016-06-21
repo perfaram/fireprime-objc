@@ -17,7 +17,7 @@
 @end
 
 @implementation FPLicenseGenerator
--(nullable instancetype) initWithSecretKey:(nonnull FPKeySecret*)key {
+-(nullable instancetype) initWithSecretKey:(nonnull FPSignKeySecret*)key {
     self = [super init];
     if (self) {
         if (sodium_init() == -1)
@@ -32,7 +32,7 @@
         // COMPUTE ED25519 PUBLIC KEY, REQUIRES ESTABLISHING A SEED
         crypto_sign_ed25519_sk_to_seed(seed, ed25519_sk);
         crypto_sign_seed_keypair(ed25519_pk, ed25519_sk, seed);
-        publicKey = [FPKeyPublic.alloc initWithBuffer:ed25519_pk ofLength:crypto_sign_PUBLICKEYBYTES copying:true];
+        publicKey = [FPSignKeyPublic.alloc initWithBuffer:ed25519_pk ofLength:crypto_sign_PUBLICKEYBYTES copying:true];
         
         licenseBuilder = [FPLicenseMetadata builder];
         if (!licenseBuilder)

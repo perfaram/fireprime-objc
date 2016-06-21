@@ -27,7 +27,7 @@
 }
 
 - (void)testWithRequiredFields {
-    FPKeySecret* secretKey = [FPKeySecret generateKey];
+    FPSignKeySecret* secretKey = [FPSignKeySecret generateKey];
     XCTAssert(secretKey != nil);
     
     if (secretKey) {
@@ -61,7 +61,7 @@
 }
 
 - (void)testWithAllFields {
-    FPKeySecret* secretKey = [FPKeySecret generateKey];
+    FPSignKeySecret* secretKey = [FPSignKeySecret generateKey];
     XCTAssert(secretKey != nil);
     
     if (secretKey) {

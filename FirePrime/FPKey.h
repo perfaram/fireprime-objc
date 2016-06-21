@@ -64,10 +64,10 @@
 -(nonnull NSData*) copyData;
 @end
 
-@interface FPKeyPublic : FPKey
+@interface FPSignKeyPublic : FPKey
 @end
 
-@interface FPKeySecret : FPKeyPublic
--(nonnull FPKeyPublic*) publicKey;
+@interface FPSignKeySecret : FPSignKeyPublic
+-(nonnull FPSignKeyPublic*) publicKey;
 +(nullable instancetype) generateKey;
 @end

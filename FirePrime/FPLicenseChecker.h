@@ -7,17 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-@class FPKeyPublic;
+@class FPSignKeyPublic;
 @class FPLicenseInformations;
 
 /**
  A singleton object holding the license registered.
  */
 @interface FPLicenseChecker : NSObject {
-    FPKeyPublic* publicKey;
+    FPSignKeyPublic* publicKey;
 }
 @property NSArray<NSString*>*__nullable blacklist;
-- (nullable instancetype) initWithPublicKey:(nonnull FPKeyPublic*)key;
+- (nullable instancetype) initWithPublicKey:(nonnull FPSignKeyPublic*)key;
 - (FPLicenseInformations*) validateLicenseAtPath:(NSString*)path;
 - (FPLicenseInformations*) validateLicenseFromData:(NSData*)data;
 

@@ -9,14 +9,14 @@
 #import "FPKey.h"
 #include "sodium.h"
 
-@interface FPKeyPublic () {
+@interface FPSignKeyPublic () {
     unsigned char* key;
     NSUInteger length;
 }
 @end
 
 
-@implementation FPKeyPublic
+@implementation FPSignKeyPublic
 +(NSUInteger) keyLength {
     return crypto_sign_PUBLICKEYBYTES;
 }
@@ -102,18 +102,18 @@
 
 
 
-@interface FPKeySecret() {
-    FPKeyPublic* publicKey;
+@interface FPSignKeySecret() {
+    FPSignKeyPublic* publicKey;
 }
--(void) setPublicKey:(FPKeyPublic*)aKey;
+-(void) setPublicKey:(FPSignKeyPublic*)aKey;
 @end
 
-@implementation FPKeySecret
+@implementation FPSignKeySecret
 +(NSUInteger) keyLength {
     return crypto_sign_SECRETKEYBYTES;
 }
 
--(FPKeyPublic*) publicKey {
+-(FPSignKeyPublic*) publicKey {
     if (publicKey)
         return publicKey;
     
@@ -123,11 +123,11 @@
     // COMPUTE ED25519 PUBLIC KEY, REQUIRES ESTABLISHING A SEED
     crypto_sign_ed25519_sk_to_seed(seed, self.buffer);
     crypto_sign_seed_keypair(ed25519_pk, (unsigned char*)self.buffer, seed);
-    publicKey = [FPKeyPublic.alloc initWithBuffer:ed25519_pk ofLength:crypto_sign_PUBLICKEYBYTES copying:true];
+    publicKey = [FPSignKeyPublic.alloc initWithBuffer:ed25519_pk ofLength:crypto_sign_PUBLICKEYBYTES copying:true];
     return publicKey;
 }
 
--(void) setPublicKey:(FPKeyPublic *)aKey {
+-(void) setPublicKey:(FPSignKeyPublic *)aKey {
     publicKey = aKey;
 }
 
@@ -137,8 +137,8 @@
     unsigned char pk[crypto_sign_PUBLICKEYBYTES];
     unsigned char sk[crypto_sign_SECRETKEYBYTES];
     int res = crypto_sign_keypair(pk, sk);
-    FPKeySecret* secret = [FPKeySecret.alloc initWithBuffer:sk ofLength:crypto_sign_SECRETKEYBYTES copying:true];
-    FPKeyPublic* public = [FPKeyPublic.alloc initWithBuffer:pk ofLength:crypto_sign_PUBLICKEYBYTES copying:true];
+    FPSignKeySecret* secret = [FPSignKeySecret.alloc initWithBuffer:sk ofLength:crypto_sign_SECRETKEYBYTES copying:true];
+    FPSignKeyPublic* public = [FPSignKeyPublic.alloc initWithBuffer:pk ofLength:crypto_sign_PUBLICKEYBYTES copying:true];
     secret.publicKey = public;
     return secret;
 }

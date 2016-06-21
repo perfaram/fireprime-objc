@@ -10,8 +10,8 @@
 #import "FPKey.h"
 
 @interface FPLicenseGenerator : NSObject {
-    FPKeySecret* secretKey;
-    FPKeyPublic* publicKey;
+    FPSignKeySecret* secretKey;
+    FPSignKeyPublic* publicKey;
 }
 
 @property (readwrite, strong, nonatomic) NSString* name;
@@ -23,7 +23,7 @@
 @property (readwrite, assign, nonatomic) SInt32 instances;
 @property (readwrite, strong, nonatomic) NSString* orderId;
 
-- (nullable instancetype) initWithSecretKey:(nonnull FPKeySecret*)key;
+- (nullable instancetype) initWithSecretKey:(nonnull FPSignKeySecret*)key;
 - (nullable NSData*) signLicenseWithError:(out NSError**)error;
 
 @end

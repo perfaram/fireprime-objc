@@ -20,7 +20,7 @@
 @end
 
 @implementation FPLicenseChecker
--(nullable instancetype) initWithPublicKey:(nonnull FPKeyPublic*)key {
+-(nullable instancetype) initWithPublicKey:(nonnull FPSignKeyPublic*)key {
     self = [super init];
     if (self) {
         if (sodium_init() == -1)
