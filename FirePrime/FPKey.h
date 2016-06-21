@@ -105,7 +105,7 @@
 /**
  The class used to sign messages, of length crypto_sign_SECRETKEYBYTES
  */
-@interface FPSignKeySecret : FPSignKeyPublic
+@interface FPSignKeySecret : FPKeySecret
 -(nonnull FPSignKeyPublic*) publicKey;
 +(nullable instancetype) generateKey;
 @end
