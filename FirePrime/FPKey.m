@@ -48,6 +48,8 @@
 -(instancetype) initWithData:(NSData*)data {//will copy NSData
     self = [super init];
     if (self) {
+        if (data.length != self.class.keyLength)
+            return nil;
         if (sodium_init() == -1)
             return nil;
         length = data.length;
@@ -60,6 +62,8 @@
 -(instancetype) initWithBuffer:(unsigned char *)buffer ofLength:(size_t)size copying:(BOOL)copy {
     self = [super init];
     if (self) {
+        if (size != self.class.keyLength)
+            return nil;
         if (sodium_init() == -1)
             return nil;
         if (copy) {
