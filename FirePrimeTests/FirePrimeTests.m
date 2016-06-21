@@ -2,13 +2,13 @@
 //  FirePrimeTests.m
 //  FirePrimeTests
 //
-//  Created by Perceval FARAMAZ on 07.06.16.
+//  Created by Perceval FARAMAZ on 21.06.16.
 //  Copyright © 2016 Faramaz. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
-#import "FirePrime.h"
-#import "FPLicenseGenerator.h"
+#import <FirePrime/FirePrime.h>
+#import <FirePrime/FPLicenseGenerator.h>
 
 @interface FirePrimeTests : XCTestCase
 
@@ -44,7 +44,6 @@
         
         FPLicenseChecker* checker = [FPLicenseChecker.alloc initWithPublicKey:secretKey.publicKey];
         FPLicenseInformations* info = [checker validateLicenseFromData:license];
-        NSLocale* currentLoc = [NSLocale currentLocale];
         
         XCTAssert([info.name isEqualToString:@"Jon Snow"]);
         XCTAssert([info.target isEqualToString:@"com.valyriansteel.longclaw"]);
@@ -104,3 +103,4 @@
 }
 
 @end
+

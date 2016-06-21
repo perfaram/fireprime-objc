@@ -63,6 +63,8 @@
 		0B2FD09A1CFAE20A00086BCD /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B2FD0641CFAE20A00086BCD /* version.h */; };
 		0B2FD09B1CFAE20A00086BCD /* sodium.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B2FD0651CFAE20A00086BCD /* sodium.h */; };
 		0B38D8A61D18544D00A02B55 /* FPSigning.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B38D8A51D18540F00A02B55 /* FPSigning.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0B55F3C81D193AF2002DF997 /* FirePrimeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B55F3C71D193AF2002DF997 /* FirePrimeTests.m */; };
+		0B55F3CA1D193AF2002DF997 /* FirePrime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B2FCFE01CFAC83A00086BCD /* FirePrime.framework */; };
 		0B7C13C41D07214C00712C2E /* FPLicenseInformations.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B7C13C21D07214C00712C2E /* FPLicenseInformations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B7C13C51D07214C00712C2E /* FPLicenseInformations.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C13C31D07214C00712C2E /* FPLicenseInformations.m */; };
 		0B7C13C81D07221700712C2E /* FPLicenseState.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B7C13C71D07221700712C2E /* FPLicenseState.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -77,11 +79,16 @@
 		0B8F926D1D0560B900240DDE /* License.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B8F92631D0560B900240DDE /* License.pb.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B8F926E1D0560B900240DDE /* License.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8F92641D0560B900240DDE /* License.pb.m */; };
 		0BCE0D811D0CB71F008C37BB /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BCE0D7A1D0CB67C008C37BB /* ProtocolBuffers.framework */; };
-		0BED2F971D073BE300C1A4E0 /* FirePrimeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BED2F961D073BE300C1A4E0 /* FirePrimeTests.m */; };
-		0BED2F991D073BE300C1A4E0 /* FirePrime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B2FCFE01CFAC83A00086BCD /* FirePrime.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0B55F3CB1D193AF2002DF997 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0B2FCFD71CFAC83A00086BCD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0B2FCFDF1CFAC83A00086BCD;
+			remoteInfo = FirePrime;
+		};
 		0BCE0D731D0CB67C008C37BB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0B6998541D09F83300C8A364 /* ProtocolBuffers.xcodeproj */;
@@ -109,13 +116,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 0BCE0D6A1D0CB2BB008C37BB;
 			remoteInfo = "OSX Framework";
-		};
-		0BED2F9A1D073BE300C1A4E0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0B2FCFD71CFAC83A00086BCD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0B2FCFDF1CFAC83A00086BCD;
-			remoteInfo = FirePrime;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -178,6 +178,9 @@
 		0B2FD0641CFAE20A00086BCD /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		0B2FD0651CFAE20A00086BCD /* sodium.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sodium.h; sourceTree = "<group>"; };
 		0B38D8A51D18540F00A02B55 /* FPSigning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FPSigning.h; path = FirePrime/FPSigning.h; sourceTree = "<group>"; };
+		0B55F3C51D193AF2002DF997 /* FirePrimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FirePrimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B55F3C71D193AF2002DF997 /* FirePrimeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirePrimeTests.m; sourceTree = "<group>"; };
+		0B55F3C91D193AF2002DF997 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B6998541D09F83300C8A364 /* ProtocolBuffers.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ProtocolBuffers.xcodeproj; path = "protobuf-objc/src/runtime/ProtocolBuffers.xcodeproj"; sourceTree = "<group>"; };
 		0B7C13C21D07214C00712C2E /* FPLicenseInformations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPLicenseInformations.h; path = FirePrime/FPLicenseInformations.h; sourceTree = "<group>"; };
 		0B7C13C31D07214C00712C2E /* FPLicenseInformations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPLicenseInformations.m; path = FirePrime/FPLicenseInformations.m; sourceTree = "<group>"; };
@@ -192,9 +195,6 @@
 		0B8F92621D0560B900240DDE /* FPLicenseGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPLicenseGenerator.m; path = FirePrime/FPLicenseGenerator.m; sourceTree = "<group>"; };
 		0B8F92631D0560B900240DDE /* License.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = License.pb.h; path = FirePrime/License.pb.h; sourceTree = "<group>"; };
 		0B8F92641D0560B900240DDE /* License.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = License.pb.m; path = FirePrime/License.pb.m; sourceTree = "<group>"; };
-		0BED2F941D073BE300C1A4E0 /* FirePrimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FirePrimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0BED2F961D073BE300C1A4E0 /* FirePrimeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirePrimeTests.m; sourceTree = "<group>"; };
-		0BED2F981D073BE300C1A4E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,11 +207,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0BED2F911D073BE300C1A4E0 /* Frameworks */ = {
+		0B55F3C21D193AF2002DF997 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BED2F991D073BE300C1A4E0 /* FirePrime.framework in Frameworks */,
+				0B55F3CA1D193AF2002DF997 /* FirePrime.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,7 +224,7 @@
 				0B6998541D09F83300C8A364 /* ProtocolBuffers.xcodeproj */,
 				0B8F92581D05607900240DDE /* FirePrime */,
 				0B2FCFE21CFAC83A00086BCD /* Supporting Files */,
-				0BED2F951D073BE300C1A4E0 /* FirePrimeTests */,
+				0B55F3C61D193AF2002DF997 /* FirePrimeTests */,
 				0B2FCFE11CFAC83A00086BCD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -233,7 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				0B2FCFE01CFAC83A00086BCD /* FirePrime.framework */,
-				0BED2F941D073BE300C1A4E0 /* FirePrimeTests.xctest */,
+				0B55F3C51D193AF2002DF997 /* FirePrimeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -320,6 +320,15 @@
 			path = sodium;
 			sourceTree = "<group>";
 		};
+		0B55F3C61D193AF2002DF997 /* FirePrimeTests */ = {
+			isa = PBXGroup;
+			children = (
+				0B55F3C71D193AF2002DF997 /* FirePrimeTests.m */,
+				0B55F3C91D193AF2002DF997 /* Info.plist */,
+			);
+			path = FirePrimeTests;
+			sourceTree = "<group>";
+		};
 		0B7C13C61D0721E100712C2E /* Protobufs */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,15 +374,6 @@
 				0BCE0D7A1D0CB67C008C37BB /* ProtocolBuffers.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		0BED2F951D073BE300C1A4E0 /* FirePrimeTests */ = {
-			isa = PBXGroup;
-			children = (
-				0BED2F961D073BE300C1A4E0 /* FirePrimeTests.m */,
-				0BED2F981D073BE300C1A4E0 /* Info.plist */,
-			);
-			path = FirePrimeTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -470,22 +470,22 @@
 			productReference = 0B2FCFE01CFAC83A00086BCD /* FirePrime.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		0BED2F931D073BE300C1A4E0 /* FirePrimeTests */ = {
+		0B55F3C41D193AF2002DF997 /* FirePrimeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0BED2F9E1D073BE300C1A4E0 /* Build configuration list for PBXNativeTarget "FirePrimeTests" */;
+			buildConfigurationList = 0B55F3CD1D193AF2002DF997 /* Build configuration list for PBXNativeTarget "FirePrimeTests" */;
 			buildPhases = (
-				0BED2F901D073BE300C1A4E0 /* Sources */,
-				0BED2F911D073BE300C1A4E0 /* Frameworks */,
-				0BED2F921D073BE300C1A4E0 /* Resources */,
+				0B55F3C11D193AF2002DF997 /* Sources */,
+				0B55F3C21D193AF2002DF997 /* Frameworks */,
+				0B55F3C31D193AF2002DF997 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				0BED2F9B1D073BE300C1A4E0 /* PBXTargetDependency */,
+				0B55F3CC1D193AF2002DF997 /* PBXTargetDependency */,
 			);
 			name = FirePrimeTests;
 			productName = FirePrimeTests;
-			productReference = 0BED2F941D073BE300C1A4E0 /* FirePrimeTests.xctest */;
+			productReference = 0B55F3C51D193AF2002DF997 /* FirePrimeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -500,7 +500,7 @@
 					0B2FCFDF1CFAC83A00086BCD = {
 						CreatedOnToolsVersion = 7.3;
 					};
-					0BED2F931D073BE300C1A4E0 = {
+					0B55F3C41D193AF2002DF997 = {
 						CreatedOnToolsVersion = 7.3;
 					};
 				};
@@ -524,7 +524,7 @@
 			projectRoot = "";
 			targets = (
 				0B2FCFDF1CFAC83A00086BCD /* FirePrime */,
-				0BED2F931D073BE300C1A4E0 /* FirePrimeTests */,
+				0B55F3C41D193AF2002DF997 /* FirePrimeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -568,7 +568,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0BED2F921D073BE300C1A4E0 /* Resources */ = {
+		0B55F3C31D193AF2002DF997 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -590,21 +590,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0BED2F901D073BE300C1A4E0 /* Sources */ = {
+		0B55F3C11D193AF2002DF997 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BED2F971D073BE300C1A4E0 /* FirePrimeTests.m in Sources */,
+				0B55F3C81D193AF2002DF997 /* FirePrimeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0BED2F9B1D073BE300C1A4E0 /* PBXTargetDependency */ = {
+		0B55F3CC1D193AF2002DF997 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0B2FCFDF1CFAC83A00086BCD /* FirePrime */;
-			targetProxy = 0BED2F9A1D073BE300C1A4E0 /* PBXContainerItemProxy */;
+			targetProxy = 0B55F3CB1D193AF2002DF997 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -744,7 +744,7 @@
 			};
 			name = Release;
 		};
-		0BED2F9C1D073BE300C1A4E0 /* Debug */ = {
+		0B55F3CE1D193AF2002DF997 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -755,7 +755,7 @@
 			};
 			name = Debug;
 		};
-		0BED2F9D1D073BE300C1A4E0 /* Release */ = {
+		0B55F3CF1D193AF2002DF997 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -787,14 +787,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0BED2F9E1D073BE300C1A4E0 /* Build configuration list for PBXNativeTarget "FirePrimeTests" */ = {
+		0B55F3CD1D193AF2002DF997 /* Build configuration list for PBXNativeTarget "FirePrimeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0BED2F9C1D073BE300C1A4E0 /* Debug */,
-				0BED2F9D1D073BE300C1A4E0 /* Release */,
+				0B55F3CE1D193AF2002DF997 /* Debug */,
+				0B55F3CF1D193AF2002DF997 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
