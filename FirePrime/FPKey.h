@@ -108,4 +108,5 @@
 @interface FPSignKeySecret : FPKeySecret
 -(nonnull FPSignKeyPublic*) publicKey;
 +(nullable instancetype) generateKey;
++(instancetype) generateKeyFromSeed:(NSString*)seedHex;
 @end
