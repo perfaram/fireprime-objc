@@ -35,7 +35,7 @@
         if ((string.length != [self.class keyLength]*2))
             return nil;
         NSCharacterSet *chars = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789ABCDEF"] invertedSet];
-        BOOL isValid = (NSNotFound == [string rangeOfCharacterFromSet:chars].location);
+        BOOL isValid = (NSNotFound == [string.uppercaseString rangeOfCharacterFromSet:chars].location);
         if (!isValid)
             return nil;
         
