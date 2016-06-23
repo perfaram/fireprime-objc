@@ -79,8 +79,8 @@
 }
 
 -(NSString*) asString {
-    char hex[length*2];
-    sodium_bin2hex(hex, length*2, key, length);
+    char hex[length*2+1]; //+1 for null-terminator
+    sodium_bin2hex(hex, length*2+1, key, length);
     return [NSString.alloc initWithUTF8String:hex];
 }
 
