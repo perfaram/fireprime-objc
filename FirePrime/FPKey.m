@@ -189,4 +189,27 @@
     return secret;
 }
 
++(instancetype) generateKeyFromSeed:(NSString*)seedHex {
+    if (sodium_init() == -1)
+        return nil;
+    unsigned char pk[crypto_sign_PUBLICKEYBYTES];
+    unsigned char sk[crypto_sign_SECRETKEYBYTES];
+    unsigned char seed[crypto_sign_SEEDBYTES];
+    
+    if ((seedHex.length != crypto_sign_SEEDBYTES*2))
+        return nil;
+    NSCharacterSet *chars = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789ABCDEF"] invertedSet];
+    BOOL isValid = (NSNotFound == [seedHex.uppercaseString rangeOfCharacterFromSet:chars].location);
+    if (!isValid)
+        return nil;
+    
+    sodium_hex2bin(seed, crypto_sign_SEEDBYTES, seedHex.UTF8String, crypto_sign_SEEDBYTES * 2, NULL, NULL, NULL);
+    
+    crypto_sign_seed_keypair(pk, sk, seed);
+    FPSignKeySecret* secret = [FPSignKeySecret.alloc initWithBuffer:sk ofLength:crypto_sign_SECRETKEYBYTES copying:true];
+    FPSignKeyPublic* public = [FPSignKeyPublic.alloc initWithBuffer:pk ofLength:crypto_sign_PUBLICKEYBYTES copying:true];
+    secret.publicKey = public;
+    return secret;
+}
+
 @end
