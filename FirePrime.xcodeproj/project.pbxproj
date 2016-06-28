@@ -65,6 +65,7 @@
 		0B55F3C81D193AF2002DF997 /* FirePrimeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B55F3C71D193AF2002DF997 /* FirePrimeTests.m */; };
 		0B55F3CA1D193AF2002DF997 /* FirePrime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B2FCFE01CFAC83A00086BCD /* FirePrime.framework */; };
 		0B55F4E31D1BD24A002DF997 /* libsodium.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B55F4E21D1BD24A002DF997 /* libsodium.a */; };
+		0B6EF5391D22451C004D54FB /* FPKeyProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B6EF5371D22451C004D54FB /* FPKeyProtocols.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B7C13C41D07214C00712C2E /* FPLicenseInformations.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B7C13C21D07214C00712C2E /* FPLicenseInformations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B7C13C51D07214C00712C2E /* FPLicenseInformations.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C13C31D07214C00712C2E /* FPLicenseInformations.m */; };
 		0B7C13C81D07221700712C2E /* FPLicenseState.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B7C13C71D07221700712C2E /* FPLicenseState.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -182,6 +183,7 @@
 		0B55F3C91D193AF2002DF997 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B55F4E21D1BD24A002DF997 /* libsodium.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsodium.a; path = ../libsodium/libsodium.a; sourceTree = "<group>"; };
 		0B6998541D09F83300C8A364 /* ProtocolBuffers.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ProtocolBuffers.xcodeproj; path = "protobuf-objc/src/runtime/ProtocolBuffers.xcodeproj"; sourceTree = "<group>"; };
+		0B6EF5371D22451C004D54FB /* FPKeyProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPKeyProtocols.h; path = FirePrime/FPKeyProtocols.h; sourceTree = "<group>"; };
 		0B7C13C21D07214C00712C2E /* FPLicenseInformations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPLicenseInformations.h; path = FirePrime/FPLicenseInformations.h; sourceTree = "<group>"; };
 		0B7C13C31D07214C00712C2E /* FPLicenseInformations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPLicenseInformations.m; path = FirePrime/FPLicenseInformations.m; sourceTree = "<group>"; };
 		0B7C13C71D07221700712C2E /* FPLicenseState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPLicenseState.h; path = FirePrime/FPLicenseState.h; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				0B7C13C71D07221700712C2E /* FPLicenseState.h */,
+				0B6EF5371D22451C004D54FB /* FPKeyProtocols.h */,
 				0B8F925B1D0560B900240DDE /* FPKey.h */,
 				0B8F925C1D0560B900240DDE /* FPKey.m */,
 				0B7C13C21D07214C00712C2E /* FPLicenseInformations.h */,
@@ -425,6 +428,7 @@
 				0B2FD0721CFAE20A00086BCD /* crypto_core_salsa208.h in Headers */,
 				0B2FD08F1CFAE20A00086BCD /* crypto_uint64.h in Headers */,
 				0B2FD0961CFAE20A00086BCD /* randombytes_salsa20_random.h in Headers */,
+				0B6EF5391D22451C004D54FB /* FPKeyProtocols.h in Headers */,
 				0B2FD0741CFAE20A00086BCD /* crypto_generichash_blake2b.h in Headers */,
 				0B2FD0771CFAE20A00086BCD /* crypto_hash_sha512.h in Headers */,
 				0B2FD0711CFAE20A00086BCD /* crypto_core_salsa2012.h in Headers */,

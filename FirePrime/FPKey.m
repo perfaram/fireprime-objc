@@ -110,37 +110,6 @@
 }
 @end
 
-
-/**
- A abstract class for all public keys
- */
-@implementation FPKeyPublic
-@end
-
-
-@implementation FPKeySecret
--(__kindof FPKeyPublic*) publicKey {
-    NSString *error = [NSString stringWithFormat:
-                       NSLocalizedString(@"You must override %@ in a subclass", nil),
-                       NSStringFromSelector(_cmd)];
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                   reason:error
-                                 userInfo:nil];
-    return nil;
-}
-
-+(instancetype) generateKey {
-    NSString *error = [NSString stringWithFormat:
-                       NSLocalizedString(@"You must override %@ in a subclass", nil),
-                       NSStringFromSelector(_cmd)];
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                   reason:error
-                                 userInfo:nil];
-    return nil;
-}
-@end
-
-
 @implementation FPSignKeyPublic
 +(NSUInteger) keyLength {
     return crypto_sign_PUBLICKEYBYTES;

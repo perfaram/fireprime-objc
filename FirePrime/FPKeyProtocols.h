@@ -1,18 +1,15 @@
 //
-//  FPKey.h
+//  FPKeyProtocols.h
 //  FirePrime
 //
-//  Created by Perceval FARAMAZ on 29.05.16.
+//  Created by Perceval FARAMAZ on 28.06.16.
 //  Copyright © 2016 Faramaz. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "FPKeyProtocols.h"
 
-/**
- The root class for all crypto keys, as it provides a default implementation for all serialization, deserialization, and initialization methods
- */
-@interface FPKey : NSObject <FPKey>
+@protocol FPKey
+
 /**
  Initializes & returns a new instance of FPKey, using the given hex string. Passing a string of an odd length, or containing non-hex chars will have this function return `nil`.
  */
@@ -76,19 +73,18 @@
 -(nonnull NSData*) copyData;
 @end
 
-/**
- The class used to verify signed messages, of length crypto_sign_PUBLICKEYBYTES
- */
-@interface FPSignKeyPublic : FPKey
-+(NSUInteger) keyLength;
+@protocol FPKeyPublic <FPKey>
+
 @end
 
+@protocol FPKeySecret <FPKey> //inherits from the public key protocol for it only contains general-purpose methods (serialization, un-serialization)
 /**
- The class used to sign messages, of length crypto_sign_SECRETKEYBYTES
+ Compute the public key matching `self` secret key – except if already done, then return the previously computed key.
  */
-@interface FPSignKeySecret : FPKey <FPKeySecret>
-+(NSUInteger) keyLength;
--(nonnull FPSignKeyPublic*) publicKey;
+-(nonnull id<FPKeyPublic>) publicKey;
+
+/**
+ Generate a secret key from the system's RNG.
+ */
 +(nullable instancetype) generateKey;
-+(instancetype) generateKeyFromSeed:(NSString*)seedHex;
 @end
