@@ -6,8 +6,8 @@
 
 @class FPLicense;
 @class FPLicenseBuilder;
-@class FPLicenseMetadata;
-@class FPLicenseMetadataBuilder;
+@class FPMetadata;
+@class FPMetadataBuilder;
 @class ObjectiveCFileOptions;
 @class ObjectiveCFileOptionsBuilder;
 @class PBDescriptorProto;
@@ -63,18 +63,108 @@
 + (void) registerAllExtensions:(PBMutableExtensionRegistry*) registry;
 @end
 
+#define Metadata_name @"name"
+#define Metadata_target @"target"
+#define Metadata_licenseId @"licenseId"
+#define Metadata_created @"created"
+#define Metadata_additional @"additional"
+@interface FPMetadata : PBGeneratedMessage<GeneratedMessageProtocol> {
+@private
+  BOOL hasCreated_:1;
+  BOOL hasName_:1;
+  BOOL hasTarget_:1;
+  BOOL hasLicenseId_:1;
+  BOOL hasAdditional_:1;
+  SInt64 created;
+  NSString* name;
+  NSString* target;
+  NSString* licenseId;
+  NSData* additional;
+}
+- (BOOL) hasName;
+- (BOOL) hasTarget;
+- (BOOL) hasLicenseId;
+- (BOOL) hasCreated;
+- (BOOL) hasAdditional;
+@property (readonly, strong) NSString* name;
+@property (readonly, strong) NSString* target;
+@property (readonly, strong) NSString* licenseId;
+@property (readonly) SInt64 created;
+@property (readonly, strong) NSData* additional;
+
++ (instancetype) defaultInstance;
+- (instancetype) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (FPMetadataBuilder*) builder;
++ (FPMetadataBuilder*) builder;
++ (FPMetadataBuilder*) builderWithPrototype:(FPMetadata*) prototype;
+- (FPMetadataBuilder*) toBuilder;
+
++ (FPMetadata*) parseFromData:(NSData*) data;
++ (FPMetadata*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (FPMetadata*) parseFromInputStream:(NSInputStream*) input;
++ (FPMetadata*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (FPMetadata*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (FPMetadata*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface FPMetadataBuilder : PBGeneratedMessageBuilder {
+@private
+  FPMetadata* resultMetadata;
+}
+
+- (FPMetadata*) defaultInstance;
+
+- (FPMetadataBuilder*) clear;
+- (FPMetadataBuilder*) clone;
+
+- (FPMetadata*) build;
+- (FPMetadata*) buildPartial;
+
+- (FPMetadataBuilder*) mergeFrom:(FPMetadata*) other;
+- (FPMetadataBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (FPMetadataBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasName;
+- (NSString*) name;
+- (FPMetadataBuilder*) setName:(NSString*) value;
+- (FPMetadataBuilder*) clearName;
+
+- (BOOL) hasTarget;
+- (NSString*) target;
+- (FPMetadataBuilder*) setTarget:(NSString*) value;
+- (FPMetadataBuilder*) clearTarget;
+
+- (BOOL) hasLicenseId;
+- (NSString*) licenseId;
+- (FPMetadataBuilder*) setLicenseId:(NSString*) value;
+- (FPMetadataBuilder*) clearLicenseId;
+
+- (BOOL) hasCreated;
+- (SInt64) created;
+- (FPMetadataBuilder*) setCreated:(SInt64) value;
+- (FPMetadataBuilder*) clearCreated;
+
+- (BOOL) hasAdditional;
+- (NSData*) additional;
+- (FPMetadataBuilder*) setAdditional:(NSData*) value;
+- (FPMetadataBuilder*) clearAdditional;
+@end
+
 #define License_license @"license"
 #define License_signature @"signature"
 @interface FPLicense : PBGeneratedMessage<GeneratedMessageProtocol> {
 @private
   BOOL hasLicense_:1;
   BOOL hasSignature_:1;
-  FPLicenseMetadata* license;
+  FPMetadata* license;
   NSData* signature;
 }
 - (BOOL) hasLicense;
 - (BOOL) hasSignature;
-@property (readonly, strong) FPLicenseMetadata* license;
+@property (readonly, strong) FPMetadata* license;
 @property (readonly, strong) NSData* signature;
 
 + (instancetype) defaultInstance;
@@ -95,126 +185,6 @@
 + (FPLicense*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-#define Metadata_name @"name"
-#define Metadata_target @"target"
-#define Metadata_licenseId @"licenseId"
-#define Metadata_created @"created"
-#define Metadata_email @"email"
-#define Metadata_company @"company"
-#define Metadata_instances @"instances"
-#define Metadata_orderId @"orderId"
-@interface FPLicenseMetadata : PBGeneratedMessage<GeneratedMessageProtocol> {
-@private
-  BOOL hasCreated_:1;
-  BOOL hasInstances_:1;
-  BOOL hasName_:1;
-  BOOL hasTarget_:1;
-  BOOL hasLicenseId_:1;
-  BOOL hasEmail_:1;
-  BOOL hasCompany_:1;
-  BOOL hasOrderId_:1;
-  SInt64 created;
-  SInt32 instances;
-  NSString* name;
-  NSString* target;
-  NSString* licenseId;
-  NSString* email;
-  NSString* company;
-  NSString* orderId;
-}
-- (BOOL) hasName;
-- (BOOL) hasTarget;
-- (BOOL) hasLicenseId;
-- (BOOL) hasCreated;
-- (BOOL) hasEmail;
-- (BOOL) hasCompany;
-- (BOOL) hasInstances;
-- (BOOL) hasOrderId;
-@property (readonly, strong) NSString* name;
-@property (readonly, strong) NSString* target;
-@property (readonly, strong) NSString* licenseId;
-@property (readonly) SInt64 created;
-@property (readonly, strong) NSString* email;
-@property (readonly, strong) NSString* company;
-@property (readonly) SInt32 instances;
-@property (readonly, strong) NSString* orderId;
-
-+ (instancetype) defaultInstance;
-- (instancetype) defaultInstance;
-
-- (BOOL) isInitialized;
-- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
-- (FPLicenseMetadataBuilder*) builder;
-+ (FPLicenseMetadataBuilder*) builder;
-+ (FPLicenseMetadataBuilder*) builderWithPrototype:(FPLicenseMetadata*) prototype;
-- (FPLicenseMetadataBuilder*) toBuilder;
-
-+ (FPLicenseMetadata*) parseFromData:(NSData*) data;
-+ (FPLicenseMetadata*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
-+ (FPLicenseMetadata*) parseFromInputStream:(NSInputStream*) input;
-+ (FPLicenseMetadata*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
-+ (FPLicenseMetadata*) parseFromCodedInputStream:(PBCodedInputStream*) input;
-+ (FPLicenseMetadata*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
-@end
-
-@interface FPLicenseMetadataBuilder : PBGeneratedMessageBuilder {
-@private
-  FPLicenseMetadata* resultMetadata;
-}
-
-- (FPLicenseMetadata*) defaultInstance;
-
-- (FPLicenseMetadataBuilder*) clear;
-- (FPLicenseMetadataBuilder*) clone;
-
-- (FPLicenseMetadata*) build;
-- (FPLicenseMetadata*) buildPartial;
-
-- (FPLicenseMetadataBuilder*) mergeFrom:(FPLicenseMetadata*) other;
-- (FPLicenseMetadataBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
-- (FPLicenseMetadataBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
-
-- (BOOL) hasName;
-- (NSString*) name;
-- (FPLicenseMetadataBuilder*) setName:(NSString*) value;
-- (FPLicenseMetadataBuilder*) clearName;
-
-- (BOOL) hasTarget;
-- (NSString*) target;
-- (FPLicenseMetadataBuilder*) setTarget:(NSString*) value;
-- (FPLicenseMetadataBuilder*) clearTarget;
-
-- (BOOL) hasLicenseId;
-- (NSString*) licenseId;
-- (FPLicenseMetadataBuilder*) setLicenseId:(NSString*) value;
-- (FPLicenseMetadataBuilder*) clearLicenseId;
-
-- (BOOL) hasCreated;
-- (SInt64) created;
-- (FPLicenseMetadataBuilder*) setCreated:(SInt64) value;
-- (FPLicenseMetadataBuilder*) clearCreated;
-
-- (BOOL) hasEmail;
-- (NSString*) email;
-- (FPLicenseMetadataBuilder*) setEmail:(NSString*) value;
-- (FPLicenseMetadataBuilder*) clearEmail;
-
-- (BOOL) hasCompany;
-- (NSString*) company;
-- (FPLicenseMetadataBuilder*) setCompany:(NSString*) value;
-- (FPLicenseMetadataBuilder*) clearCompany;
-
-- (BOOL) hasInstances;
-- (SInt32) instances;
-- (FPLicenseMetadataBuilder*) setInstances:(SInt32) value;
-- (FPLicenseMetadataBuilder*) clearInstances;
-
-- (BOOL) hasOrderId;
-- (NSString*) orderId;
-- (FPLicenseMetadataBuilder*) setOrderId:(NSString*) value;
-- (FPLicenseMetadataBuilder*) clearOrderId;
-@end
-
 @interface FPLicenseBuilder : PBGeneratedMessageBuilder {
 @private
   FPLicense* resultLicense;
@@ -233,10 +203,10 @@
 - (FPLicenseBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasLicense;
-- (FPLicenseMetadata*) license;
-- (FPLicenseBuilder*) setLicense:(FPLicenseMetadata*) value;
-- (FPLicenseBuilder*) setLicenseBuilder:(FPLicenseMetadataBuilder*) builderForValue;
-- (FPLicenseBuilder*) mergeLicense:(FPLicenseMetadata*) value;
+- (FPMetadata*) license;
+- (FPLicenseBuilder*) setLicense:(FPMetadata*) value;
+- (FPLicenseBuilder*) setLicenseBuilder:(FPMetadataBuilder*) builderForValue;
+- (FPLicenseBuilder*) mergeLicense:(FPMetadata*) value;
 - (FPLicenseBuilder*) clearLicense;
 
 - (BOOL) hasSignature;

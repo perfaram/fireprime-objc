@@ -21,8 +21,422 @@ static PBExtensionRegistry* extensionRegistry = nil;
 }
 @end
 
+@interface FPMetadata ()
+@property (strong) NSString* name;
+@property (strong) NSString* target;
+@property (strong) NSString* licenseId;
+@property SInt64 created;
+@property (strong) NSData* additional;
+@end
+
+@implementation FPMetadata
+
+- (BOOL) hasName {
+  return !!hasName_;
+}
+- (void) setHasName:(BOOL) _value_ {
+  hasName_ = !!_value_;
+}
+@synthesize name;
+- (BOOL) hasTarget {
+  return !!hasTarget_;
+}
+- (void) setHasTarget:(BOOL) _value_ {
+  hasTarget_ = !!_value_;
+}
+@synthesize target;
+- (BOOL) hasLicenseId {
+  return !!hasLicenseId_;
+}
+- (void) setHasLicenseId:(BOOL) _value_ {
+  hasLicenseId_ = !!_value_;
+}
+@synthesize licenseId;
+- (BOOL) hasCreated {
+  return !!hasCreated_;
+}
+- (void) setHasCreated:(BOOL) _value_ {
+  hasCreated_ = !!_value_;
+}
+@synthesize created;
+- (BOOL) hasAdditional {
+  return !!hasAdditional_;
+}
+- (void) setHasAdditional:(BOOL) _value_ {
+  hasAdditional_ = !!_value_;
+}
+@synthesize additional;
+- (instancetype) init {
+  if ((self = [super init])) {
+    self.name = @"";
+    self.target = @"";
+    self.licenseId = @"";
+    self.created = 0L;
+    self.additional = [NSData data];
+  }
+  return self;
+}
+static FPMetadata* defaultFPMetadataInstance = nil;
++ (void) initialize {
+  if (self == [FPMetadata class]) {
+    defaultFPMetadataInstance = [[FPMetadata alloc] init];
+  }
+}
++ (instancetype) defaultInstance {
+  return defaultFPMetadataInstance;
+}
+- (instancetype) defaultInstance {
+  return defaultFPMetadataInstance;
+}
+- (BOOL) isInitialized {
+  if (!self.hasName) {
+    return NO;
+  }
+  if (!self.hasTarget) {
+    return NO;
+  }
+  if (!self.hasLicenseId) {
+    return NO;
+  }
+  if (!self.hasCreated) {
+    return NO;
+  }
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasName) {
+    [output writeString:1 value:self.name];
+  }
+  if (self.hasTarget) {
+    [output writeString:2 value:self.target];
+  }
+  if (self.hasLicenseId) {
+    [output writeString:3 value:self.licenseId];
+  }
+  if (self.hasCreated) {
+    [output writeInt64:4 value:self.created];
+  }
+  if (self.hasAdditional) {
+    [output writeData:5 value:self.additional];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasName) {
+    size_ += computeStringSize(1, self.name);
+  }
+  if (self.hasTarget) {
+    size_ += computeStringSize(2, self.target);
+  }
+  if (self.hasLicenseId) {
+    size_ += computeStringSize(3, self.licenseId);
+  }
+  if (self.hasCreated) {
+    size_ += computeInt64Size(4, self.created);
+  }
+  if (self.hasAdditional) {
+    size_ += computeDataSize(5, self.additional);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (FPMetadata*) parseFromData:(NSData*) data {
+  return (FPMetadata*)[[[FPMetadata builder] mergeFromData:data] build];
+}
++ (FPMetadata*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (FPMetadata*)[[[FPMetadata builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (FPMetadata*) parseFromInputStream:(NSInputStream*) input {
+  return (FPMetadata*)[[[FPMetadata builder] mergeFromInputStream:input] build];
+}
++ (FPMetadata*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (FPMetadata*)[[[FPMetadata builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (FPMetadata*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (FPMetadata*)[[[FPMetadata builder] mergeFromCodedInputStream:input] build];
+}
++ (FPMetadata*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (FPMetadata*)[[[FPMetadata builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (FPMetadataBuilder*) builder {
+  return [[FPMetadataBuilder alloc] init];
+}
++ (FPMetadataBuilder*) builderWithPrototype:(FPMetadata*) prototype {
+  return [[FPMetadata builder] mergeFrom:prototype];
+}
+- (FPMetadataBuilder*) builder {
+  return [FPMetadata builder];
+}
+- (FPMetadataBuilder*) toBuilder {
+  return [FPMetadata builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasName) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"name", self.name];
+  }
+  if (self.hasTarget) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"target", self.target];
+  }
+  if (self.hasLicenseId) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"licenseId", self.licenseId];
+  }
+  if (self.hasCreated) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"created", [NSNumber numberWithLongLong:self.created]];
+  }
+  if (self.hasAdditional) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"additional", self.additional];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (void) storeInDictionary:(NSMutableDictionary *)dictionary {
+  if (self.hasName) {
+    [dictionary setObject: self.name forKey: @"name"];
+  }
+  if (self.hasTarget) {
+    [dictionary setObject: self.target forKey: @"target"];
+  }
+  if (self.hasLicenseId) {
+    [dictionary setObject: self.licenseId forKey: @"licenseId"];
+  }
+  if (self.hasCreated) {
+    [dictionary setObject: [NSNumber numberWithLongLong:self.created] forKey: @"created"];
+  }
+  if (self.hasAdditional) {
+    [dictionary setObject: self.additional forKey: @"additional"];
+  }
+  [self.unknownFields storeInDictionary:dictionary];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[FPMetadata class]]) {
+    return NO;
+  }
+  FPMetadata *otherMessage = other;
+  return
+      self.hasName == otherMessage.hasName &&
+      (!self.hasName || [self.name isEqual:otherMessage.name]) &&
+      self.hasTarget == otherMessage.hasTarget &&
+      (!self.hasTarget || [self.target isEqual:otherMessage.target]) &&
+      self.hasLicenseId == otherMessage.hasLicenseId &&
+      (!self.hasLicenseId || [self.licenseId isEqual:otherMessage.licenseId]) &&
+      self.hasCreated == otherMessage.hasCreated &&
+      (!self.hasCreated || self.created == otherMessage.created) &&
+      self.hasAdditional == otherMessage.hasAdditional &&
+      (!self.hasAdditional || [self.additional isEqual:otherMessage.additional]) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  if (self.hasName) {
+    hashCode = hashCode * 31 + [self.name hash];
+  }
+  if (self.hasTarget) {
+    hashCode = hashCode * 31 + [self.target hash];
+  }
+  if (self.hasLicenseId) {
+    hashCode = hashCode * 31 + [self.licenseId hash];
+  }
+  if (self.hasCreated) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.created] hash];
+  }
+  if (self.hasAdditional) {
+    hashCode = hashCode * 31 + [self.additional hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface FPMetadataBuilder()
+@property (strong) FPMetadata* resultMetadata;
+@end
+
+@implementation FPMetadataBuilder
+@synthesize resultMetadata;
+- (instancetype) init {
+  if ((self = [super init])) {
+    self.resultMetadata = [[FPMetadata alloc] init];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return resultMetadata;
+}
+- (FPMetadataBuilder*) clear {
+  self.resultMetadata = [[FPMetadata alloc] init];
+  return self;
+}
+- (FPMetadataBuilder*) clone {
+  return [FPMetadata builderWithPrototype:resultMetadata];
+}
+- (FPMetadata*) defaultInstance {
+  return [FPMetadata defaultInstance];
+}
+- (FPMetadata*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (FPMetadata*) buildPartial {
+  FPMetadata* returnMe = resultMetadata;
+  self.resultMetadata = nil;
+  return returnMe;
+}
+- (FPMetadataBuilder*) mergeFrom:(FPMetadata*) other {
+  if (other == [FPMetadata defaultInstance]) {
+    return self;
+  }
+  if (other.hasName) {
+    [self setName:other.name];
+  }
+  if (other.hasTarget) {
+    [self setTarget:other.target];
+  }
+  if (other.hasLicenseId) {
+    [self setLicenseId:other.licenseId];
+  }
+  if (other.hasCreated) {
+    [self setCreated:other.created];
+  }
+  if (other.hasAdditional) {
+    [self setAdditional:other.additional];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (FPMetadataBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (FPMetadataBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 10: {
+        [self setName:[input readString]];
+        break;
+      }
+      case 18: {
+        [self setTarget:[input readString]];
+        break;
+      }
+      case 26: {
+        [self setLicenseId:[input readString]];
+        break;
+      }
+      case 32: {
+        [self setCreated:[input readInt64]];
+        break;
+      }
+      case 42: {
+        [self setAdditional:[input readData]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasName {
+  return resultMetadata.hasName;
+}
+- (NSString*) name {
+  return resultMetadata.name;
+}
+- (FPMetadataBuilder*) setName:(NSString*) value {
+  resultMetadata.hasName = YES;
+  resultMetadata.name = value;
+  return self;
+}
+- (FPMetadataBuilder*) clearName {
+  resultMetadata.hasName = NO;
+  resultMetadata.name = @"";
+  return self;
+}
+- (BOOL) hasTarget {
+  return resultMetadata.hasTarget;
+}
+- (NSString*) target {
+  return resultMetadata.target;
+}
+- (FPMetadataBuilder*) setTarget:(NSString*) value {
+  resultMetadata.hasTarget = YES;
+  resultMetadata.target = value;
+  return self;
+}
+- (FPMetadataBuilder*) clearTarget {
+  resultMetadata.hasTarget = NO;
+  resultMetadata.target = @"";
+  return self;
+}
+- (BOOL) hasLicenseId {
+  return resultMetadata.hasLicenseId;
+}
+- (NSString*) licenseId {
+  return resultMetadata.licenseId;
+}
+- (FPMetadataBuilder*) setLicenseId:(NSString*) value {
+  resultMetadata.hasLicenseId = YES;
+  resultMetadata.licenseId = value;
+  return self;
+}
+- (FPMetadataBuilder*) clearLicenseId {
+  resultMetadata.hasLicenseId = NO;
+  resultMetadata.licenseId = @"";
+  return self;
+}
+- (BOOL) hasCreated {
+  return resultMetadata.hasCreated;
+}
+- (SInt64) created {
+  return resultMetadata.created;
+}
+- (FPMetadataBuilder*) setCreated:(SInt64) value {
+  resultMetadata.hasCreated = YES;
+  resultMetadata.created = value;
+  return self;
+}
+- (FPMetadataBuilder*) clearCreated {
+  resultMetadata.hasCreated = NO;
+  resultMetadata.created = 0L;
+  return self;
+}
+- (BOOL) hasAdditional {
+  return resultMetadata.hasAdditional;
+}
+- (NSData*) additional {
+  return resultMetadata.additional;
+}
+- (FPMetadataBuilder*) setAdditional:(NSData*) value {
+  resultMetadata.hasAdditional = YES;
+  resultMetadata.additional = value;
+  return self;
+}
+- (FPMetadataBuilder*) clearAdditional {
+  resultMetadata.hasAdditional = NO;
+  resultMetadata.additional = [NSData data];
+  return self;
+}
+@end
+
 @interface FPLicense ()
-@property (strong) FPLicenseMetadata* license;
+@property (strong) FPMetadata* license;
 @property (strong) NSData* signature;
 @end
 
@@ -44,7 +458,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
 @synthesize signature;
 - (instancetype) init {
   if ((self = [super init])) {
-    self.license = [FPLicenseMetadata defaultInstance];
+    self.license = [FPMetadata defaultInstance];
     self.signature = [NSData data];
   }
   return self;
@@ -78,7 +492,7 @@ static FPLicense* defaultFPLicenseInstance = nil;
     [output writeMessage:1 value:self.license];
   }
   if (self.hasSignature) {
-    [output writeData:9 value:self.signature];
+    [output writeData:6 value:self.signature];
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
@@ -93,7 +507,7 @@ static FPLicense* defaultFPLicenseInstance = nil;
     size_ += computeMessageSize(1, self.license);
   }
   if (self.hasSignature) {
-    size_ += computeDataSize(9, self.signature);
+    size_ += computeDataSize(6, self.signature);
   }
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
@@ -180,567 +594,6 @@ static FPLicense* defaultFPLicenseInstance = nil;
 }
 @end
 
-@interface FPLicenseMetadata ()
-@property (strong) NSString* name;
-@property (strong) NSString* target;
-@property (strong) NSString* licenseId;
-@property SInt64 created;
-@property (strong) NSString* email;
-@property (strong) NSString* company;
-@property SInt32 instances;
-@property (strong) NSString* orderId;
-@end
-
-@implementation FPLicenseMetadata
-
-- (BOOL) hasName {
-  return !!hasName_;
-}
-- (void) setHasName:(BOOL) _value_ {
-  hasName_ = !!_value_;
-}
-@synthesize name;
-- (BOOL) hasTarget {
-  return !!hasTarget_;
-}
-- (void) setHasTarget:(BOOL) _value_ {
-  hasTarget_ = !!_value_;
-}
-@synthesize target;
-- (BOOL) hasLicenseId {
-  return !!hasLicenseId_;
-}
-- (void) setHasLicenseId:(BOOL) _value_ {
-  hasLicenseId_ = !!_value_;
-}
-@synthesize licenseId;
-- (BOOL) hasCreated {
-  return !!hasCreated_;
-}
-- (void) setHasCreated:(BOOL) _value_ {
-  hasCreated_ = !!_value_;
-}
-@synthesize created;
-- (BOOL) hasEmail {
-  return !!hasEmail_;
-}
-- (void) setHasEmail:(BOOL) _value_ {
-  hasEmail_ = !!_value_;
-}
-@synthesize email;
-- (BOOL) hasCompany {
-  return !!hasCompany_;
-}
-- (void) setHasCompany:(BOOL) _value_ {
-  hasCompany_ = !!_value_;
-}
-@synthesize company;
-- (BOOL) hasInstances {
-  return !!hasInstances_;
-}
-- (void) setHasInstances:(BOOL) _value_ {
-  hasInstances_ = !!_value_;
-}
-@synthesize instances;
-- (BOOL) hasOrderId {
-  return !!hasOrderId_;
-}
-- (void) setHasOrderId:(BOOL) _value_ {
-  hasOrderId_ = !!_value_;
-}
-@synthesize orderId;
-- (instancetype) init {
-  if ((self = [super init])) {
-    self.name = @"";
-    self.target = @"";
-    self.licenseId = @"";
-    self.created = 0L;
-    self.email = @"";
-    self.company = @"";
-    self.instances = 0;
-    self.orderId = @"";
-  }
-  return self;
-}
-static FPLicenseMetadata* defaultFPLicenseMetadataInstance = nil;
-+ (void) initialize {
-  if (self == [FPLicenseMetadata class]) {
-    defaultFPLicenseMetadataInstance = [[FPLicenseMetadata alloc] init];
-  }
-}
-+ (instancetype) defaultInstance {
-  return defaultFPLicenseMetadataInstance;
-}
-- (instancetype) defaultInstance {
-  return defaultFPLicenseMetadataInstance;
-}
-- (BOOL) isInitialized {
-  if (!self.hasName) {
-    return NO;
-  }
-  if (!self.hasTarget) {
-    return NO;
-  }
-  if (!self.hasLicenseId) {
-    return NO;
-  }
-  if (!self.hasCreated) {
-    return NO;
-  }
-  return YES;
-}
-- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
-  if (self.hasName) {
-    [output writeString:1 value:self.name];
-  }
-  if (self.hasTarget) {
-    [output writeString:2 value:self.target];
-  }
-  if (self.hasLicenseId) {
-    [output writeString:3 value:self.licenseId];
-  }
-  if (self.hasCreated) {
-    [output writeInt64:4 value:self.created];
-  }
-  if (self.hasEmail) {
-    [output writeString:5 value:self.email];
-  }
-  if (self.hasCompany) {
-    [output writeString:6 value:self.company];
-  }
-  if (self.hasInstances) {
-    [output writeInt32:7 value:self.instances];
-  }
-  if (self.hasOrderId) {
-    [output writeString:8 value:self.orderId];
-  }
-  [self.unknownFields writeToCodedOutputStream:output];
-}
-- (SInt32) serializedSize {
-  __block SInt32 size_ = memoizedSerializedSize;
-  if (size_ != -1) {
-    return size_;
-  }
-
-  size_ = 0;
-  if (self.hasName) {
-    size_ += computeStringSize(1, self.name);
-  }
-  if (self.hasTarget) {
-    size_ += computeStringSize(2, self.target);
-  }
-  if (self.hasLicenseId) {
-    size_ += computeStringSize(3, self.licenseId);
-  }
-  if (self.hasCreated) {
-    size_ += computeInt64Size(4, self.created);
-  }
-  if (self.hasEmail) {
-    size_ += computeStringSize(5, self.email);
-  }
-  if (self.hasCompany) {
-    size_ += computeStringSize(6, self.company);
-  }
-  if (self.hasInstances) {
-    size_ += computeInt32Size(7, self.instances);
-  }
-  if (self.hasOrderId) {
-    size_ += computeStringSize(8, self.orderId);
-  }
-  size_ += self.unknownFields.serializedSize;
-  memoizedSerializedSize = size_;
-  return size_;
-}
-+ (FPLicenseMetadata*) parseFromData:(NSData*) data {
-  return (FPLicenseMetadata*)[[[FPLicenseMetadata builder] mergeFromData:data] build];
-}
-+ (FPLicenseMetadata*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  return (FPLicenseMetadata*)[[[FPLicenseMetadata builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
-}
-+ (FPLicenseMetadata*) parseFromInputStream:(NSInputStream*) input {
-  return (FPLicenseMetadata*)[[[FPLicenseMetadata builder] mergeFromInputStream:input] build];
-}
-+ (FPLicenseMetadata*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  return (FPLicenseMetadata*)[[[FPLicenseMetadata builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
-}
-+ (FPLicenseMetadata*) parseFromCodedInputStream:(PBCodedInputStream*) input {
-  return (FPLicenseMetadata*)[[[FPLicenseMetadata builder] mergeFromCodedInputStream:input] build];
-}
-+ (FPLicenseMetadata*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  return (FPLicenseMetadata*)[[[FPLicenseMetadata builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
-}
-+ (FPLicenseMetadataBuilder*) builder {
-  return [[FPLicenseMetadataBuilder alloc] init];
-}
-+ (FPLicenseMetadataBuilder*) builderWithPrototype:(FPLicenseMetadata*) prototype {
-  return [[FPLicenseMetadata builder] mergeFrom:prototype];
-}
-- (FPLicenseMetadataBuilder*) builder {
-  return [FPLicenseMetadata builder];
-}
-- (FPLicenseMetadataBuilder*) toBuilder {
-  return [FPLicenseMetadata builderWithPrototype:self];
-}
-- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
-  if (self.hasName) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"name", self.name];
-  }
-  if (self.hasTarget) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"target", self.target];
-  }
-  if (self.hasLicenseId) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"licenseId", self.licenseId];
-  }
-  if (self.hasCreated) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"created", [NSNumber numberWithLongLong:self.created]];
-  }
-  if (self.hasEmail) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"email", self.email];
-  }
-  if (self.hasCompany) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"company", self.company];
-  }
-  if (self.hasInstances) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"instances", [NSNumber numberWithInteger:self.instances]];
-  }
-  if (self.hasOrderId) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"orderId", self.orderId];
-  }
-  [self.unknownFields writeDescriptionTo:output withIndent:indent];
-}
-- (void) storeInDictionary:(NSMutableDictionary *)dictionary {
-  if (self.hasName) {
-    [dictionary setObject: self.name forKey: @"name"];
-  }
-  if (self.hasTarget) {
-    [dictionary setObject: self.target forKey: @"target"];
-  }
-  if (self.hasLicenseId) {
-    [dictionary setObject: self.licenseId forKey: @"licenseId"];
-  }
-  if (self.hasCreated) {
-    [dictionary setObject: [NSNumber numberWithLongLong:self.created] forKey: @"created"];
-  }
-  if (self.hasEmail) {
-    [dictionary setObject: self.email forKey: @"email"];
-  }
-  if (self.hasCompany) {
-    [dictionary setObject: self.company forKey: @"company"];
-  }
-  if (self.hasInstances) {
-    [dictionary setObject: [NSNumber numberWithInteger:self.instances] forKey: @"instances"];
-  }
-  if (self.hasOrderId) {
-    [dictionary setObject: self.orderId forKey: @"orderId"];
-  }
-  [self.unknownFields storeInDictionary:dictionary];
-}
-- (BOOL) isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (![other isKindOfClass:[FPLicenseMetadata class]]) {
-    return NO;
-  }
-  FPLicenseMetadata *otherMessage = other;
-  return
-      self.hasName == otherMessage.hasName &&
-      (!self.hasName || [self.name isEqual:otherMessage.name]) &&
-      self.hasTarget == otherMessage.hasTarget &&
-      (!self.hasTarget || [self.target isEqual:otherMessage.target]) &&
-      self.hasLicenseId == otherMessage.hasLicenseId &&
-      (!self.hasLicenseId || [self.licenseId isEqual:otherMessage.licenseId]) &&
-      self.hasCreated == otherMessage.hasCreated &&
-      (!self.hasCreated || self.created == otherMessage.created) &&
-      self.hasEmail == otherMessage.hasEmail &&
-      (!self.hasEmail || [self.email isEqual:otherMessage.email]) &&
-      self.hasCompany == otherMessage.hasCompany &&
-      (!self.hasCompany || [self.company isEqual:otherMessage.company]) &&
-      self.hasInstances == otherMessage.hasInstances &&
-      (!self.hasInstances || self.instances == otherMessage.instances) &&
-      self.hasOrderId == otherMessage.hasOrderId &&
-      (!self.hasOrderId || [self.orderId isEqual:otherMessage.orderId]) &&
-      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
-}
-- (NSUInteger) hash {
-  __block NSUInteger hashCode = 7;
-  if (self.hasName) {
-    hashCode = hashCode * 31 + [self.name hash];
-  }
-  if (self.hasTarget) {
-    hashCode = hashCode * 31 + [self.target hash];
-  }
-  if (self.hasLicenseId) {
-    hashCode = hashCode * 31 + [self.licenseId hash];
-  }
-  if (self.hasCreated) {
-    hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.created] hash];
-  }
-  if (self.hasEmail) {
-    hashCode = hashCode * 31 + [self.email hash];
-  }
-  if (self.hasCompany) {
-    hashCode = hashCode * 31 + [self.company hash];
-  }
-  if (self.hasInstances) {
-    hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.instances] hash];
-  }
-  if (self.hasOrderId) {
-    hashCode = hashCode * 31 + [self.orderId hash];
-  }
-  hashCode = hashCode * 31 + [self.unknownFields hash];
-  return hashCode;
-}
-@end
-
-@interface FPLicenseMetadataBuilder()
-@property (strong) FPLicenseMetadata* resultMetadata;
-@end
-
-@implementation FPLicenseMetadataBuilder
-@synthesize resultMetadata;
-- (instancetype) init {
-  if ((self = [super init])) {
-    self.resultMetadata = [[FPLicenseMetadata alloc] init];
-  }
-  return self;
-}
-- (PBGeneratedMessage*) internalGetResult {
-  return resultMetadata;
-}
-- (FPLicenseMetadataBuilder*) clear {
-  self.resultMetadata = [[FPLicenseMetadata alloc] init];
-  return self;
-}
-- (FPLicenseMetadataBuilder*) clone {
-  return [FPLicenseMetadata builderWithPrototype:resultMetadata];
-}
-- (FPLicenseMetadata*) defaultInstance {
-  return [FPLicenseMetadata defaultInstance];
-}
-- (FPLicenseMetadata*) build {
-  [self checkInitialized];
-  return [self buildPartial];
-}
-- (FPLicenseMetadata*) buildPartial {
-  FPLicenseMetadata* returnMe = resultMetadata;
-  self.resultMetadata = nil;
-  return returnMe;
-}
-- (FPLicenseMetadataBuilder*) mergeFrom:(FPLicenseMetadata*) other {
-  if (other == [FPLicenseMetadata defaultInstance]) {
-    return self;
-  }
-  if (other.hasName) {
-    [self setName:other.name];
-  }
-  if (other.hasTarget) {
-    [self setTarget:other.target];
-  }
-  if (other.hasLicenseId) {
-    [self setLicenseId:other.licenseId];
-  }
-  if (other.hasCreated) {
-    [self setCreated:other.created];
-  }
-  if (other.hasEmail) {
-    [self setEmail:other.email];
-  }
-  if (other.hasCompany) {
-    [self setCompany:other.company];
-  }
-  if (other.hasInstances) {
-    [self setInstances:other.instances];
-  }
-  if (other.hasOrderId) {
-    [self setOrderId:other.orderId];
-  }
-  [self mergeUnknownFields:other.unknownFields];
-  return self;
-}
-- (FPLicenseMetadataBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
-  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
-}
-- (FPLicenseMetadataBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
-  while (YES) {
-    SInt32 tag = [input readTag];
-    switch (tag) {
-      case 0:
-        [self setUnknownFields:[unknownFields build]];
-        return self;
-      default: {
-        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
-          [self setUnknownFields:[unknownFields build]];
-          return self;
-        }
-        break;
-      }
-      case 10: {
-        [self setName:[input readString]];
-        break;
-      }
-      case 18: {
-        [self setTarget:[input readString]];
-        break;
-      }
-      case 26: {
-        [self setLicenseId:[input readString]];
-        break;
-      }
-      case 32: {
-        [self setCreated:[input readInt64]];
-        break;
-      }
-      case 42: {
-        [self setEmail:[input readString]];
-        break;
-      }
-      case 50: {
-        [self setCompany:[input readString]];
-        break;
-      }
-      case 56: {
-        [self setInstances:[input readInt32]];
-        break;
-      }
-      case 66: {
-        [self setOrderId:[input readString]];
-        break;
-      }
-    }
-  }
-}
-- (BOOL) hasName {
-  return resultMetadata.hasName;
-}
-- (NSString*) name {
-  return resultMetadata.name;
-}
-- (FPLicenseMetadataBuilder*) setName:(NSString*) value {
-  resultMetadata.hasName = YES;
-  resultMetadata.name = value;
-  return self;
-}
-- (FPLicenseMetadataBuilder*) clearName {
-  resultMetadata.hasName = NO;
-  resultMetadata.name = @"";
-  return self;
-}
-- (BOOL) hasTarget {
-  return resultMetadata.hasTarget;
-}
-- (NSString*) target {
-  return resultMetadata.target;
-}
-- (FPLicenseMetadataBuilder*) setTarget:(NSString*) value {
-  resultMetadata.hasTarget = YES;
-  resultMetadata.target = value;
-  return self;
-}
-- (FPLicenseMetadataBuilder*) clearTarget {
-  resultMetadata.hasTarget = NO;
-  resultMetadata.target = @"";
-  return self;
-}
-- (BOOL) hasLicenseId {
-  return resultMetadata.hasLicenseId;
-}
-- (NSString*) licenseId {
-  return resultMetadata.licenseId;
-}
-- (FPLicenseMetadataBuilder*) setLicenseId:(NSString*) value {
-  resultMetadata.hasLicenseId = YES;
-  resultMetadata.licenseId = value;
-  return self;
-}
-- (FPLicenseMetadataBuilder*) clearLicenseId {
-  resultMetadata.hasLicenseId = NO;
-  resultMetadata.licenseId = @"";
-  return self;
-}
-- (BOOL) hasCreated {
-  return resultMetadata.hasCreated;
-}
-- (SInt64) created {
-  return resultMetadata.created;
-}
-- (FPLicenseMetadataBuilder*) setCreated:(SInt64) value {
-  resultMetadata.hasCreated = YES;
-  resultMetadata.created = value;
-  return self;
-}
-- (FPLicenseMetadataBuilder*) clearCreated {
-  resultMetadata.hasCreated = NO;
-  resultMetadata.created = 0L;
-  return self;
-}
-- (BOOL) hasEmail {
-  return resultMetadata.hasEmail;
-}
-- (NSString*) email {
-  return resultMetadata.email;
-}
-- (FPLicenseMetadataBuilder*) setEmail:(NSString*) value {
-  resultMetadata.hasEmail = YES;
-  resultMetadata.email = value;
-  return self;
-}
-- (FPLicenseMetadataBuilder*) clearEmail {
-  resultMetadata.hasEmail = NO;
-  resultMetadata.email = @"";
-  return self;
-}
-- (BOOL) hasCompany {
-  return resultMetadata.hasCompany;
-}
-- (NSString*) company {
-  return resultMetadata.company;
-}
-- (FPLicenseMetadataBuilder*) setCompany:(NSString*) value {
-  resultMetadata.hasCompany = YES;
-  resultMetadata.company = value;
-  return self;
-}
-- (FPLicenseMetadataBuilder*) clearCompany {
-  resultMetadata.hasCompany = NO;
-  resultMetadata.company = @"";
-  return self;
-}
-- (BOOL) hasInstances {
-  return resultMetadata.hasInstances;
-}
-- (SInt32) instances {
-  return resultMetadata.instances;
-}
-- (FPLicenseMetadataBuilder*) setInstances:(SInt32) value {
-  resultMetadata.hasInstances = YES;
-  resultMetadata.instances = value;
-  return self;
-}
-- (FPLicenseMetadataBuilder*) clearInstances {
-  resultMetadata.hasInstances = NO;
-  resultMetadata.instances = 0;
-  return self;
-}
-- (BOOL) hasOrderId {
-  return resultMetadata.hasOrderId;
-}
-- (NSString*) orderId {
-  return resultMetadata.orderId;
-}
-- (FPLicenseMetadataBuilder*) setOrderId:(NSString*) value {
-  resultMetadata.hasOrderId = YES;
-  resultMetadata.orderId = value;
-  return self;
-}
-- (FPLicenseMetadataBuilder*) clearOrderId {
-  resultMetadata.hasOrderId = NO;
-  resultMetadata.orderId = @"";
-  return self;
-}
-@end
-
 @interface FPLicenseBuilder()
 @property (strong) FPLicense* resultLicense;
 @end
@@ -807,7 +660,7 @@ static FPLicenseMetadata* defaultFPLicenseMetadataInstance = nil;
         break;
       }
       case 10: {
-        FPLicenseMetadataBuilder* subBuilder = [FPLicenseMetadata builder];
+        FPMetadataBuilder* subBuilder = [FPMetadata builder];
         if (self.hasLicense) {
           [subBuilder mergeFrom:self.license];
         }
@@ -815,7 +668,7 @@ static FPLicenseMetadata* defaultFPLicenseMetadataInstance = nil;
         [self setLicense:[subBuilder buildPartial]];
         break;
       }
-      case 74: {
+      case 50: {
         [self setSignature:[input readData]];
         break;
       }
@@ -825,22 +678,22 @@ static FPLicenseMetadata* defaultFPLicenseMetadataInstance = nil;
 - (BOOL) hasLicense {
   return resultLicense.hasLicense;
 }
-- (FPLicenseMetadata*) license {
+- (FPMetadata*) license {
   return resultLicense.license;
 }
-- (FPLicenseBuilder*) setLicense:(FPLicenseMetadata*) value {
+- (FPLicenseBuilder*) setLicense:(FPMetadata*) value {
   resultLicense.hasLicense = YES;
   resultLicense.license = value;
   return self;
 }
-- (FPLicenseBuilder*) setLicenseBuilder:(FPLicenseMetadataBuilder*) builderForValue {
+- (FPLicenseBuilder*) setLicenseBuilder:(FPMetadataBuilder*) builderForValue {
   return [self setLicense:[builderForValue build]];
 }
-- (FPLicenseBuilder*) mergeLicense:(FPLicenseMetadata*) value {
+- (FPLicenseBuilder*) mergeLicense:(FPMetadata*) value {
   if (resultLicense.hasLicense &&
-      resultLicense.license != [FPLicenseMetadata defaultInstance]) {
+      resultLicense.license != [FPMetadata defaultInstance]) {
     resultLicense.license =
-      [[[FPLicenseMetadata builderWithPrototype:resultLicense.license] mergeFrom:value] buildPartial];
+      [[[FPMetadata builderWithPrototype:resultLicense.license] mergeFrom:value] buildPartial];
   } else {
     resultLicense.license = value;
   }
@@ -849,7 +702,7 @@ static FPLicenseMetadata* defaultFPLicenseMetadataInstance = nil;
 }
 - (FPLicenseBuilder*) clearLicense {
   resultLicense.hasLicense = NO;
-  resultLicense.license = [FPLicenseMetadata defaultInstance];
+  resultLicense.license = [FPMetadata defaultInstance];
   return self;
 }
 - (BOOL) hasSignature {
