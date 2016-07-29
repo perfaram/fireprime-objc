@@ -16,11 +16,8 @@
 @property (nonnull, readonly, strong) NSString* target;
 @property (nonnull, readonly, strong) NSString* licenseId;
 @property (nonnull, readonly, strong) NSDate* created;
-//---- optionals
-@property (nullable, readonly, strong) NSString* email;
-@property (nullable, readonly, strong) NSString* company;
-@property (          readonly, assign) SInt32 instances;
-@property (nullable, readonly, strong) NSString* orderId;
+//---- optional
+@property (nullable, readonly, strong) NSDictionary* additional;
 
 -(BOOL) isValid;
 @end

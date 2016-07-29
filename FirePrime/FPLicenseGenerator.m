@@ -49,29 +49,13 @@
     licenseBuilder = [licenseBuilder setTarget:target];
 }
 
--(void) setEmail:(NSString *)email {
-    licenseBuilder = [licenseBuilder setEmail:email];
-}
-
--(void) setCompany:(NSString *)company {
-    licenseBuilder = [licenseBuilder setCompany:company];
-}
-
 -(void) setCreated:(NSDate *)created {
     time_t unixTime = (time_t) [created timeIntervalSince1970];
     licenseBuilder = [licenseBuilder setCreated:unixTime];
 }
 
--(void) setOrderId:(NSString *)orderId {
-    licenseBuilder = [licenseBuilder setOrderId:orderId];
-}
-
 -(void) setLicenseId:(NSString *)licenseId {
     licenseBuilder = [licenseBuilder setLicenseId:licenseId];
-}
-
--(void) setInstances:(SInt32)instances {
-    licenseBuilder = [licenseBuilder setInstances:instances];
 }
 
 -(NSData*) signLicenseWithError:(out NSError**)error {

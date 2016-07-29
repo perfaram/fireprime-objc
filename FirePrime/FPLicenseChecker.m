@@ -14,7 +14,7 @@
 #include "sodium.h"
 
 @interface FPLicenseInformations()
--(nonnull instancetype) initWithName:(NSString*)aName target:(NSString*)aTarget licenseId:(NSString*)aLicenseId email:(NSString*)anEmail company:(NSString*)aCompany orderId:(NSString*)anOrderId createdAt:(NSDate*)createdAt forInstances:(SInt32)forInstances inState:(FPLicenseState)aState;
+-(nonnull instancetype) initWithName:(NSString*)aName target:(NSString*)aTarget licenseId:(NSString*)aLicenseId createdAt:(NSDate*)createdAt inState:(FPLicenseState)aState;
 
 -(nonnull instancetype) initWithState:(FPLicenseState)aState;
 @end
@@ -63,11 +63,7 @@
     return [FPLicenseInformations.alloc initWithName:licenseMetadata.name
                                               target:licenseMetadata.target
                                            licenseId:licenseMetadata.licenseId
-                                               email:(licenseMetadata.hasEmail) ? licenseMetadata.email : nil
-                                             company:(licenseMetadata.hasCompany) ? licenseMetadata.company : nil
-                                             orderId:(licenseMetadata.hasOrderId) ? licenseMetadata.orderId : nil
                                            createdAt:crDate
-                                        forInstances:(licenseMetadata.hasInstances) ? licenseMetadata.instances : -1
                                              inState:FPLicenseStateValid];
 }
 

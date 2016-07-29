@@ -21,7 +21,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
 }
 @end
 
-@interface FPMetadata ()
+@interface FPLicenseMetadata ()
 @property (strong) NSString* name;
 @property (strong) NSString* target;
 @property (strong) NSString* licenseId;
@@ -29,7 +29,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
 @property (strong) NSData* additional;
 @end
 
-@implementation FPMetadata
+@implementation FPLicenseMetadata
 
 - (BOOL) hasName {
   return !!hasName_;
@@ -76,17 +76,17 @@ static PBExtensionRegistry* extensionRegistry = nil;
   }
   return self;
 }
-static FPMetadata* defaultFPMetadataInstance = nil;
+static FPLicenseMetadata* defaultFPLicenseMetadataInstance = nil;
 + (void) initialize {
-  if (self == [FPMetadata class]) {
-    defaultFPMetadataInstance = [[FPMetadata alloc] init];
+  if (self == [FPLicenseMetadata class]) {
+    defaultFPLicenseMetadataInstance = [[FPLicenseMetadata alloc] init];
   }
 }
 + (instancetype) defaultInstance {
-  return defaultFPMetadataInstance;
+  return defaultFPLicenseMetadataInstance;
 }
 - (instancetype) defaultInstance {
-  return defaultFPMetadataInstance;
+  return defaultFPLicenseMetadataInstance;
 }
 - (BOOL) isInitialized {
   if (!self.hasName) {
@@ -147,35 +147,35 @@ static FPMetadata* defaultFPMetadataInstance = nil;
   memoizedSerializedSize = size_;
   return size_;
 }
-+ (FPMetadata*) parseFromData:(NSData*) data {
-  return (FPMetadata*)[[[FPMetadata builder] mergeFromData:data] build];
++ (FPLicenseMetadata*) parseFromData:(NSData*) data {
+  return (FPLicenseMetadata*)[[[FPLicenseMetadata builder] mergeFromData:data] build];
 }
-+ (FPMetadata*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  return (FPMetadata*)[[[FPMetadata builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
++ (FPLicenseMetadata*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (FPLicenseMetadata*)[[[FPLicenseMetadata builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
 }
-+ (FPMetadata*) parseFromInputStream:(NSInputStream*) input {
-  return (FPMetadata*)[[[FPMetadata builder] mergeFromInputStream:input] build];
++ (FPLicenseMetadata*) parseFromInputStream:(NSInputStream*) input {
+  return (FPLicenseMetadata*)[[[FPLicenseMetadata builder] mergeFromInputStream:input] build];
 }
-+ (FPMetadata*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  return (FPMetadata*)[[[FPMetadata builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
++ (FPLicenseMetadata*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (FPLicenseMetadata*)[[[FPLicenseMetadata builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
 }
-+ (FPMetadata*) parseFromCodedInputStream:(PBCodedInputStream*) input {
-  return (FPMetadata*)[[[FPMetadata builder] mergeFromCodedInputStream:input] build];
++ (FPLicenseMetadata*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (FPLicenseMetadata*)[[[FPLicenseMetadata builder] mergeFromCodedInputStream:input] build];
 }
-+ (FPMetadata*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  return (FPMetadata*)[[[FPMetadata builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
++ (FPLicenseMetadata*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (FPLicenseMetadata*)[[[FPLicenseMetadata builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
 }
-+ (FPMetadataBuilder*) builder {
-  return [[FPMetadataBuilder alloc] init];
++ (FPLicenseMetadataBuilder*) builder {
+  return [[FPLicenseMetadataBuilder alloc] init];
 }
-+ (FPMetadataBuilder*) builderWithPrototype:(FPMetadata*) prototype {
-  return [[FPMetadata builder] mergeFrom:prototype];
++ (FPLicenseMetadataBuilder*) builderWithPrototype:(FPLicenseMetadata*) prototype {
+  return [[FPLicenseMetadata builder] mergeFrom:prototype];
 }
-- (FPMetadataBuilder*) builder {
-  return [FPMetadata builder];
+- (FPLicenseMetadataBuilder*) builder {
+  return [FPLicenseMetadata builder];
 }
-- (FPMetadataBuilder*) toBuilder {
-  return [FPMetadata builderWithPrototype:self];
+- (FPLicenseMetadataBuilder*) toBuilder {
+  return [FPLicenseMetadata builderWithPrototype:self];
 }
 - (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
   if (self.hasName) {
@@ -217,10 +217,10 @@ static FPMetadata* defaultFPMetadataInstance = nil;
   if (other == self) {
     return YES;
   }
-  if (![other isKindOfClass:[FPMetadata class]]) {
+  if (![other isKindOfClass:[FPLicenseMetadata class]]) {
     return NO;
   }
-  FPMetadata *otherMessage = other;
+  FPLicenseMetadata *otherMessage = other;
   return
       self.hasName == otherMessage.hasName &&
       (!self.hasName || [self.name isEqual:otherMessage.name]) &&
@@ -256,42 +256,42 @@ static FPMetadata* defaultFPMetadataInstance = nil;
 }
 @end
 
-@interface FPMetadataBuilder()
-@property (strong) FPMetadata* resultMetadata;
+@interface FPLicenseMetadataBuilder()
+@property (strong) FPLicenseMetadata* resultLicenseMetadata;
 @end
 
-@implementation FPMetadataBuilder
-@synthesize resultMetadata;
+@implementation FPLicenseMetadataBuilder
+@synthesize resultLicenseMetadata;
 - (instancetype) init {
   if ((self = [super init])) {
-    self.resultMetadata = [[FPMetadata alloc] init];
+    self.resultLicenseMetadata = [[FPLicenseMetadata alloc] init];
   }
   return self;
 }
 - (PBGeneratedMessage*) internalGetResult {
-  return resultMetadata;
+  return resultLicenseMetadata;
 }
-- (FPMetadataBuilder*) clear {
-  self.resultMetadata = [[FPMetadata alloc] init];
+- (FPLicenseMetadataBuilder*) clear {
+  self.resultLicenseMetadata = [[FPLicenseMetadata alloc] init];
   return self;
 }
-- (FPMetadataBuilder*) clone {
-  return [FPMetadata builderWithPrototype:resultMetadata];
+- (FPLicenseMetadataBuilder*) clone {
+  return [FPLicenseMetadata builderWithPrototype:resultLicenseMetadata];
 }
-- (FPMetadata*) defaultInstance {
-  return [FPMetadata defaultInstance];
+- (FPLicenseMetadata*) defaultInstance {
+  return [FPLicenseMetadata defaultInstance];
 }
-- (FPMetadata*) build {
+- (FPLicenseMetadata*) build {
   [self checkInitialized];
   return [self buildPartial];
 }
-- (FPMetadata*) buildPartial {
-  FPMetadata* returnMe = resultMetadata;
-  self.resultMetadata = nil;
+- (FPLicenseMetadata*) buildPartial {
+  FPLicenseMetadata* returnMe = resultLicenseMetadata;
+  self.resultLicenseMetadata = nil;
   return returnMe;
 }
-- (FPMetadataBuilder*) mergeFrom:(FPMetadata*) other {
-  if (other == [FPMetadata defaultInstance]) {
+- (FPLicenseMetadataBuilder*) mergeFrom:(FPLicenseMetadata*) other {
+  if (other == [FPLicenseMetadata defaultInstance]) {
     return self;
   }
   if (other.hasName) {
@@ -312,10 +312,10 @@ static FPMetadata* defaultFPMetadataInstance = nil;
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
-- (FPMetadataBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+- (FPLicenseMetadataBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
-- (FPMetadataBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+- (FPLicenseMetadataBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     SInt32 tag = [input readTag];
@@ -354,89 +354,89 @@ static FPMetadata* defaultFPMetadataInstance = nil;
   }
 }
 - (BOOL) hasName {
-  return resultMetadata.hasName;
+  return resultLicenseMetadata.hasName;
 }
 - (NSString*) name {
-  return resultMetadata.name;
+  return resultLicenseMetadata.name;
 }
-- (FPMetadataBuilder*) setName:(NSString*) value {
-  resultMetadata.hasName = YES;
-  resultMetadata.name = value;
+- (FPLicenseMetadataBuilder*) setName:(NSString*) value {
+  resultLicenseMetadata.hasName = YES;
+  resultLicenseMetadata.name = value;
   return self;
 }
-- (FPMetadataBuilder*) clearName {
-  resultMetadata.hasName = NO;
-  resultMetadata.name = @"";
+- (FPLicenseMetadataBuilder*) clearName {
+  resultLicenseMetadata.hasName = NO;
+  resultLicenseMetadata.name = @"";
   return self;
 }
 - (BOOL) hasTarget {
-  return resultMetadata.hasTarget;
+  return resultLicenseMetadata.hasTarget;
 }
 - (NSString*) target {
-  return resultMetadata.target;
+  return resultLicenseMetadata.target;
 }
-- (FPMetadataBuilder*) setTarget:(NSString*) value {
-  resultMetadata.hasTarget = YES;
-  resultMetadata.target = value;
+- (FPLicenseMetadataBuilder*) setTarget:(NSString*) value {
+  resultLicenseMetadata.hasTarget = YES;
+  resultLicenseMetadata.target = value;
   return self;
 }
-- (FPMetadataBuilder*) clearTarget {
-  resultMetadata.hasTarget = NO;
-  resultMetadata.target = @"";
+- (FPLicenseMetadataBuilder*) clearTarget {
+  resultLicenseMetadata.hasTarget = NO;
+  resultLicenseMetadata.target = @"";
   return self;
 }
 - (BOOL) hasLicenseId {
-  return resultMetadata.hasLicenseId;
+  return resultLicenseMetadata.hasLicenseId;
 }
 - (NSString*) licenseId {
-  return resultMetadata.licenseId;
+  return resultLicenseMetadata.licenseId;
 }
-- (FPMetadataBuilder*) setLicenseId:(NSString*) value {
-  resultMetadata.hasLicenseId = YES;
-  resultMetadata.licenseId = value;
+- (FPLicenseMetadataBuilder*) setLicenseId:(NSString*) value {
+  resultLicenseMetadata.hasLicenseId = YES;
+  resultLicenseMetadata.licenseId = value;
   return self;
 }
-- (FPMetadataBuilder*) clearLicenseId {
-  resultMetadata.hasLicenseId = NO;
-  resultMetadata.licenseId = @"";
+- (FPLicenseMetadataBuilder*) clearLicenseId {
+  resultLicenseMetadata.hasLicenseId = NO;
+  resultLicenseMetadata.licenseId = @"";
   return self;
 }
 - (BOOL) hasCreated {
-  return resultMetadata.hasCreated;
+  return resultLicenseMetadata.hasCreated;
 }
 - (SInt64) created {
-  return resultMetadata.created;
+  return resultLicenseMetadata.created;
 }
-- (FPMetadataBuilder*) setCreated:(SInt64) value {
-  resultMetadata.hasCreated = YES;
-  resultMetadata.created = value;
+- (FPLicenseMetadataBuilder*) setCreated:(SInt64) value {
+  resultLicenseMetadata.hasCreated = YES;
+  resultLicenseMetadata.created = value;
   return self;
 }
-- (FPMetadataBuilder*) clearCreated {
-  resultMetadata.hasCreated = NO;
-  resultMetadata.created = 0L;
+- (FPLicenseMetadataBuilder*) clearCreated {
+  resultLicenseMetadata.hasCreated = NO;
+  resultLicenseMetadata.created = 0L;
   return self;
 }
 - (BOOL) hasAdditional {
-  return resultMetadata.hasAdditional;
+  return resultLicenseMetadata.hasAdditional;
 }
 - (NSData*) additional {
-  return resultMetadata.additional;
+  return resultLicenseMetadata.additional;
 }
-- (FPMetadataBuilder*) setAdditional:(NSData*) value {
-  resultMetadata.hasAdditional = YES;
-  resultMetadata.additional = value;
+- (FPLicenseMetadataBuilder*) setAdditional:(NSData*) value {
+  resultLicenseMetadata.hasAdditional = YES;
+  resultLicenseMetadata.additional = value;
   return self;
 }
-- (FPMetadataBuilder*) clearAdditional {
-  resultMetadata.hasAdditional = NO;
-  resultMetadata.additional = [NSData data];
+- (FPLicenseMetadataBuilder*) clearAdditional {
+  resultLicenseMetadata.hasAdditional = NO;
+  resultLicenseMetadata.additional = [NSData data];
   return self;
 }
 @end
 
 @interface FPLicense ()
-@property (strong) FPMetadata* license;
+@property (strong) FPLicenseMetadata* license;
 @property (strong) NSData* signature;
 @end
 
@@ -458,7 +458,7 @@ static FPMetadata* defaultFPMetadataInstance = nil;
 @synthesize signature;
 - (instancetype) init {
   if ((self = [super init])) {
-    self.license = [FPMetadata defaultInstance];
+    self.license = [FPLicenseMetadata defaultInstance];
     self.signature = [NSData data];
   }
   return self;
@@ -660,7 +660,7 @@ static FPLicense* defaultFPLicenseInstance = nil;
         break;
       }
       case 10: {
-        FPMetadataBuilder* subBuilder = [FPMetadata builder];
+        FPLicenseMetadataBuilder* subBuilder = [FPLicenseMetadata builder];
         if (self.hasLicense) {
           [subBuilder mergeFrom:self.license];
         }
@@ -678,22 +678,22 @@ static FPLicense* defaultFPLicenseInstance = nil;
 - (BOOL) hasLicense {
   return resultLicense.hasLicense;
 }
-- (FPMetadata*) license {
+- (FPLicenseMetadata*) license {
   return resultLicense.license;
 }
-- (FPLicenseBuilder*) setLicense:(FPMetadata*) value {
+- (FPLicenseBuilder*) setLicense:(FPLicenseMetadata*) value {
   resultLicense.hasLicense = YES;
   resultLicense.license = value;
   return self;
 }
-- (FPLicenseBuilder*) setLicenseBuilder:(FPMetadataBuilder*) builderForValue {
+- (FPLicenseBuilder*) setLicenseBuilder:(FPLicenseMetadataBuilder*) builderForValue {
   return [self setLicense:[builderForValue build]];
 }
-- (FPLicenseBuilder*) mergeLicense:(FPMetadata*) value {
+- (FPLicenseBuilder*) mergeLicense:(FPLicenseMetadata*) value {
   if (resultLicense.hasLicense &&
-      resultLicense.license != [FPMetadata defaultInstance]) {
+      resultLicense.license != [FPLicenseMetadata defaultInstance]) {
     resultLicense.license =
-      [[[FPMetadata builderWithPrototype:resultLicense.license] mergeFrom:value] buildPartial];
+      [[[FPLicenseMetadata builderWithPrototype:resultLicense.license] mergeFrom:value] buildPartial];
   } else {
     resultLicense.license = value;
   }
@@ -702,7 +702,7 @@ static FPLicense* defaultFPLicenseInstance = nil;
 }
 - (FPLicenseBuilder*) clearLicense {
   resultLicense.hasLicense = NO;
-  resultLicense.license = [FPMetadata defaultInstance];
+  resultLicense.license = [FPLicenseMetadata defaultInstance];
   return self;
 }
 - (BOOL) hasSignature {

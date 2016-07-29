@@ -19,10 +19,6 @@
 @property (readwrite, strong, nonatomic, nonnull)  NSString* target;
 @property (readwrite, strong, nonatomic, nonnull)  NSString* licenseId;
 @property (readwrite, strong, nonatomic, nonnull)  NSDate* created;
-@property (readwrite, strong, nonatomic, nullable) NSString* email;
-@property (readwrite, strong, nonatomic, nullable) NSString* company;
-@property (readwrite, assign, nonatomic          ) SInt32 instances;
-@property (readwrite, strong, nonatomic, nullable) NSString* orderId;
 
 - (nullable instancetype) initWithSecretKey:(nonnull FPSignKeySecret*)key;
 - (nullable NSData*) signLicenseWithError:(ByRefError)error;
