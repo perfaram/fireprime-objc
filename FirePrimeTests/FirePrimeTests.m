@@ -59,41 +59,6 @@
     }
 }
 
-- (void)testWithAllFields {
-    FPSignKeySecret* secretKey = [FPSignKeySecret generateKey];
-    XCTAssert(secretKey != nil);
-    
-    if (secretKey) {
-        FPLicenseGenerator* generator = [FPLicenseGenerator.alloc initWithSecretKey:secretKey];
-        
-        //those are, obviously, just examples
-        generator.name = @"Jon Snow";
-        generator.target = @"com.valyriansteel.longclaw";
-        NSDate* nowDate = [NSDate date];
-        generator.created = nowDate;
-        generator.licenseId = @"ASOIAF96";
-        generator.orderId = @"BC44-3734-C9";
-        generator.company = @"Night's Watch";
-        generator.email = @"jon.snow@winterfell.com";
-        generator.instances = 1; //single license
-        
-        NSData* license = [generator signLicenseWithError:nil];
-        
-        
-        FPLicenseChecker* checker = [FPLicenseChecker.alloc initWithPublicKey:secretKey.publicKey];
-        FPLicenseInformations* info = [checker validateLicenseFromData:license];
-        
-        XCTAssert([info.name isEqualToString:@"Jon Snow"]);
-        XCTAssert([info.target isEqualToString:@"com.valyriansteel.longclaw"]);
-        XCTAssert(fabs([info.created timeIntervalSinceDate:nowDate]) < 1);
-        XCTAssert([info.licenseId isEqualToString:@"ASOIAF96"]);
-        XCTAssert([info.orderId isEqualToString:@"BC44-3734-C9"]);
-        XCTAssert([info.company isEqualToString:@"Night's Watch"]);
-        XCTAssert([info.email isEqualToString:@"jon.snow@winterfell.com"]);
-        XCTAssert(info.instances == 1);
-    }
-}
-
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
     [self measureBlock:^{
